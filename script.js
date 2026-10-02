@@ -1,13 +1,11 @@
 const tracks = [
-  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/banner.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem a toca e guiam a comunidade pelo buraco abaixo.', images:[1,2,3,4,5] },
+  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem a toca e guiam a comunidade pelo buraco abaixo.', images:[1,2,3,4,5] },
   { key:'cheshire', name:'Gato de Cheshire', tag:'TRILHA 02', role:'RED TEAM / PENTEST', accent:'#ff28dc', bg:'url("assets/crops/cheshire.jpg")', fig:'assets/crops/cheshire.jpg', figPos:'center 30%', desc:'Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro.', images:[6,7,8,9,10] },
   { key:'queen', name:'Rainha de Copas', tag:'TRILHA 03', role:'BLUE TEAM / IR', accent:'#71b9ff', bg:'url("assets/crops/queen.jpg")', fig:'assets/crops/queen.jpg', figPos:'center 25%', desc:'Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos.', images:[1,3,5,7,9] },
   { key:'hatter', name:'Chapeleiro', tag:'TRILHA 04', role:'WORKSHOP / LAB', accent:'#c17aff', bg:'url("assets/crops/hatter.jpg")', fig:'assets/crops/hatter.jpg', figPos:'center 28%', desc:'Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático.', images:[2,4,6,8,10] }
 ];
-
 const photoFor = n => `assets/crops/speaker-${String(n).padStart(2,'0')}.jpg`;
 const tracksEl = document.getElementById('tracks');
-
 function makeCard(track, n, copyIndex){
   const slot = String(copyIndex).padStart(2,'0');
   const photo = photoFor(n);
@@ -21,7 +19,6 @@ function makeCard(track, n, copyIndex){
     </div>
   </article>`;
 }
-
 function trackMarkup(track){
   const core = track.images.map((n, i) => makeCard(track, n, i+1)).join('');
   return `<section class="track-row" style="--track-accent:${track.accent};--track-bg:${track.bg}">
@@ -37,9 +34,7 @@ function trackMarkup(track){
     </div>
   </section>`;
 }
-
 tracksEl.innerHTML = tracks.map(trackMarkup).join('');
-
 document.querySelectorAll('.rail[data-sponsor-set]').forEach(rail => {
   const set = rail.dataset.sponsorSet;
   const count = parseInt(rail.dataset.sponsorCount || '5', 10);
@@ -54,7 +49,7 @@ document.querySelectorAll('.rail[data-sponsor-set]').forEach(rail => {
   }).join('');
   rail.innerHTML = cards + cards + cards;
 });
-
+const finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
 document.querySelectorAll('.rail').forEach(rail => {
   const cards = [...rail.children];
   let baseWidth = 0;
@@ -65,19 +60,16 @@ document.querySelectorAll('.rail').forEach(rail => {
   };
   requestAnimationFrame(measure);
   window.addEventListener('resize', () => { if(!rail.dataset.measured){ measure(); rail.dataset.measured='1'; } });
-
   const normalize = () => {
     if (!baseWidth) return;
     if (rail.scrollLeft < baseWidth * 0.45) rail.scrollLeft += baseWidth;
     if (rail.scrollLeft > baseWidth * 1.55) rail.scrollLeft -= baseWidth;
   };
   rail.addEventListener('scroll', normalize, {passive:true});
-
   const wrap = rail.closest('.rail-area');
   wrap.querySelector('[data-dir="prev"]').addEventListener('click', () => rail.scrollBy({left:-Math.min(rail.clientWidth*.78,860), behavior:'smooth'}));
   wrap.querySelector('[data-dir="next"]').addEventListener('click', () => rail.scrollBy({left:Math.min(rail.clientWidth*.78,860), behavior:'smooth'}));
-
-  // v6: captura so depois de mover (threshold) para nao roubar o clique dos cards
+  if (!finePointer) return;
   let dragging=false,captured=false,startX=0,startY=0,startScroll=0,suppressClick=false;
   rail.addEventListener('pointerdown', e => { dragging=true; captured=false; suppressClick=false; startX=e.clientX; startY=e.clientY; startScroll=rail.scrollLeft; });
   rail.addEventListener('pointermove', e => {
@@ -95,16 +87,15 @@ document.querySelectorAll('.rail').forEach(rail => {
   rail.addEventListener('click', e => { if(suppressClick){ e.stopPropagation(); e.preventDefault(); suppressClick=false; } }, true);
   rail.addEventListener('wheel', e => { if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();rail.scrollLeft+=e.deltaY;} }, {passive:false});
 });
-
 const header=document.getElementById('header');
 window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>24),{passive:true});
 const menuBtn=document.querySelector('.menu-toggle'); const nav=document.querySelector('.main-nav');
+const closeMenu=()=>{ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); };
 menuBtn.addEventListener('click',()=>{ const open=nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',String(open)); });
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
-
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{ if(nav.classList.contains('open') && !nav.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(); });
+window.addEventListener('scroll',()=>{ if(nav.classList.contains('open')) closeMenu(); },{passive:true});
 document.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>img.classList.add('image-error')));
-
-// ===== Modais (Código de Conduta e Política de Privacidade) =====
 const openModal = id => {
   const m = document.getElementById(id);
   if (!m) return;
@@ -126,8 +117,6 @@ document.querySelectorAll('.modal').forEach(m => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(closeModal);
 });
-
-// ===== v6: modal do palestrante (clique no card) =====
 (function(){
   const modal = document.getElementById('modal-speaker');
   if (!modal) return;
@@ -155,7 +144,6 @@ document.addEventListener('keydown', e => {
     });
   });
 })();
-
 const cyberCursor = document.getElementById('cyber-cursor');
 if (cyberCursor) {
   let inactivityTimer;
@@ -175,23 +163,18 @@ if (cyberCursor) {
     setTimeout(triggerRandomGlitch, Math.random() * 2000 + 1000);
   })();
 }
-
 (function(){
   const touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const warp = document.getElementById('warp');
-  if (touch || reduced || !warp) return; // touch/motion reduzido: mantém scrollbar nativa e sem warp
-
+  if (touch || reduced || !warp) return;
   const doc = document.documentElement;
   doc.classList.add('fx-ready');
-
   const track = document.createElement('div'); track.id = 'fx-sb';
   const thumb = document.createElement('span'); thumb.id = 'fx-sb-thumb';
   track.appendChild(thumb); document.body.appendChild(track);
-
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const sb = { h: 1, thumbH: 0, maxScroll: 1, dragging: false, offY: 0, idleT: 0 };
-
   function sbMeasure(){
     const docH = Math.max(1, doc.scrollHeight);
     sb.maxScroll = Math.max(1, docH - window.innerHeight);
@@ -231,14 +214,9 @@ if (cyberCursor) {
   window.addEventListener('resize', () => { sbMeasure(); sbUpdate(); });
   window.addEventListener('load', () => { sbMeasure(); sbUpdate(); });
   if (window.ResizeObserver) new ResizeObserver(() => { sbMeasure(); sbUpdate(); }).observe(document.body);
-
-  // --- v5: warp/skewY removido a pedido; a scrollbar custom continua, atualizada no evento de scroll ---
   window.addEventListener('scroll', () => { sbUpdate(); wake(); }, {passive:true});
   sbMeasure(); sbUpdate(); wake();
 })();
-
-
-// ===== v5: tela de loading (preloader) + v10: saida absolute cinema (iris, letterbox, sweep, letras) =====
 (function(){
   const loader = document.getElementById('bsb-loader');
   if (!loader) return;
@@ -266,10 +244,8 @@ if (cyberCursor) {
   const minTime = new Promise(r => setTimeout(r, reduced ? 500 : 2300));
   if (document.readyState === 'complete') minTime.then(hide);
   else window.addEventListener('load', () => minTime.then(hide));
-  setTimeout(hide, 5600); // segurança: nunca prende a página
+  setTimeout(hide, 5600);
 })();
-
-// ===== v5: item ativo no navbar (clique + scrollspy) =====
 (function(){
   const links = [...document.querySelectorAll('.main-nav a')];
   if (!links.length) return;
@@ -283,8 +259,6 @@ if (cyberCursor) {
   Object.keys(byId).forEach(id => { const s = document.getElementById(id); if (s) spy.observe(s); });
   window.addEventListener('scroll', () => { if (window.scrollY < 160) setActive(null); }, {passive:true});
 })();
-
-// ===== v5: animações de entrada (reveal on scroll) =====
 (function(){
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
@@ -299,7 +273,6 @@ if (cyberCursor) {
     if (el.closest('.rail')) return;
     el.classList.add('reveal');
   });
-  // escalonamento (stagger) dentro de grades
   document.querySelectorAll('.theme-grid,.history-grid,.sponsor-tiers,.program-grid,.contact-grid,.stats,.objectives-grid,.check-list,.footer-contacts,.sponsor-walls').forEach(grid => {
     [...grid.children].forEach((c, i) => c.style.setProperty('--rd', Math.min(i * 70, 420) + 'ms'));
   });
@@ -309,9 +282,7 @@ if (cyberCursor) {
     });
   }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // hero entra em cena quando o loading termina
-  const heroEls = [...document.querySelectorAll('.hero-meta,.hero-copy,.hero-scroll')]; // v10: o label entra pela cascata de letras
+  const heroEls = [...document.querySelectorAll('.hero-meta,.hero-copy,.hero-scroll')];
   heroEls.forEach((el, i) => { el.classList.add('reveal'); el.style.setProperty('--rd', (i * 170) + 'ms'); });
   const showHero = () => requestAnimationFrame(() => heroEls.forEach(el => el.classList.add('visible')));
   if (document.documentElement.classList.contains('loader-lock')) {
@@ -320,7 +291,6 @@ if (cyberCursor) {
     setTimeout(showHero, 300);
   }
 })();
-
 (function(){
   const label = document.querySelector('.hero-label-left');
   if (!label || label.dataset.chSplit) return;
@@ -342,7 +312,6 @@ if (cyberCursor) {
   };
   walk(label);
 })();
-
 (function(){
   const ghost = document.querySelector('.hero-rabbit-ghost');
   if (!ghost) return;
@@ -355,7 +324,6 @@ if (cyberCursor) {
   const loop = () => setTimeout(() => { if (!document.hidden) burst(); loop(); }, 3400 + Math.random() * 4200);
   loop();
 })();
-
 (function(){
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;

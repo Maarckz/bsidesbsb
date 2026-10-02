@@ -14,10 +14,8 @@
 .contact-section{background:linear-gradient(180deg,#050916,#03060f)}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.contact-card{border:1px solid var(--line);border-radius:18px;padding:24px;min-height:180px;display:flex;flex-direction:column;background:linear-gradient(140deg,rgba(11,19,40,.86),rgba(3,7,16,.92));transition:.25s}.contact-card:hover{transform:translateY(-5px);border-color:rgba(17,209,255,.46)}.contact-card span{font-size:.61rem;letter-spacing:.14em;color:#8197b8}.contact-card strong{font-size:1.25rem;margin-top:auto}.contact-card small{margin-top:8px;color:var(--pink);font-weight:800;letter-spacing:.12em}
 .footer{position:relative;padding:62px 36px 24px;border-top:1px solid var(--line);background:radial-gradient(circle at 50% 100%,rgba(25,207,255,.16),transparent 55%),#02050d;overflow:hidden}.footer-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.4fr;gap:50px}.footer-brand img{width:170px}.footer-brand p{color:#8295b5;margin:18px 0;font-size:.8rem}.footer-brand p span{color:var(--pink)}.footer-nav{display:flex;flex-wrap:wrap;gap:13px 20px;align-content:start}.footer-nav a{font-size:.67rem;color:#a8b8d2}.footer-bottom{max-width:var(--max);position:relative;z-index:1;margin:34px auto 0;padding-top:18px;border-top:1px solid rgba(81,110,167,.2);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#61728f;font-size:.66rem}
 @media (max-width:1120px){.main-nav{gap:13px}.header-cta{display:none}.theme-grid{grid-template-columns:repeat(2,1fr)}.program-grid{grid-template-columns:repeat(3,1fr)}.sponsor-tiers{grid-template-columns:repeat(2,1fr)}.track-row{grid-template-columns:235px 1fr}}
-@media (max-width:900px){.site-header{height:68px;padding:0 18px}.brand img{width:135px}.main-nav{display:none;position:absolute;left:0;right:0;top:68px;padding:20px 18px;background:rgba(2,5,14,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.main-nav.open{display:flex}.menu-toggle{display:block}.hero{min-height:780px}.hero-ui{width:calc(100% - 40px);padding-bottom:48px}.hero-label{display:none}.section{padding:92px 20px}.section-head-row{display:block}.section-head-row>p{margin-top:18px}.about-layout{grid-template-columns:1fr}.poster-panel{max-width:560px;margin:auto}.stats{grid-template-columns:repeat(2,1fr)}.track-row{grid-template-columns:1fr}.track-info{border-right:0;border-bottom:1px solid var(--line);padding-bottom:20px}.rail{padding-bottom:10px}.history-grid,.policy-grid,.contact-grid{grid-template-columns:1fr}.location-banner{grid-template-columns:1fr}.location-banner img{height:220px}.footer-inner{grid-template-columns:1fr}.light-section{padding-left:20px;padding-right:20px}}
+@media (max-width:900px){.site-header{height:68px;padding:0 18px}.brand img{width:135px}.main-nav{display:none;position:absolute;left:0;right:0;top:68px;padding:20px 18px;background:rgba(2,5,14,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.main-nav.open{display:flex}.menu-toggle{display:block}.hero{min-height:100vh;min-height:100svh}.hero-ui{width:calc(100% - 40px);padding-bottom:48px}.hero-label{display:none}.section{padding:92px 20px}.section-head-row{display:block}.section-head-row>p{margin-top:18px}.about-layout{grid-template-columns:1fr}.poster-panel{max-width:560px;margin:auto}.stats{grid-template-columns:repeat(2,1fr)}.track-row{grid-template-columns:minmax(0,1fr)}.track-info{border-right:0;border-bottom:1px solid var(--line);padding-bottom:20px}.rail{padding-bottom:10px}.history-grid,.policy-grid,.contact-grid{grid-template-columns:1fr}.location-banner{grid-template-columns:1fr}.location-banner img{height:220px}.footer-inner{grid-template-columns:1fr}.light-section{padding-left:20px;padding-right:20px}}
 @media (max-width:620px){h2{font-size:2.9rem}.hero-image{object-position:57% center}.hero-meta{font-size:.56rem;max-width:100%;line-height:1.5;flex-wrap:wrap}.hero-copy{max-width:100%}.hero-copy p{font-size:.92rem}.btn{width:100%}.speaker-card{flex-basis:166px}.speaker-photo{height:145px}.theme-grid,.program-grid,.sponsor-tiers{grid-template-columns:1fr}.theme-image{height:210px}.history-stats{grid-template-columns:repeat(2,1fr)}.sponsor-copy{padding:50px 24px}.sponsor-hero{min-height:600px}.sponsor-overlay{background:linear-gradient(180deg,rgba(3,6,14,.2),rgba(3,6,14,.96) 75%)}.faq-list summary{grid-template-columns:34px 1fr 20px;font-size:.9rem}.faq-list details p{padding-left:50px}.footer{padding-left:20px;padding-right:20px}}
-
-/* New sub-sections added for content coherence with old site */
 .objectives-card h3,.experience-card h3,.network-card h3{margin:6px 0 14px}
 .objectives-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .objectives-grid>div{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(14,24,52,.55),rgba(4,8,18,.55))}
@@ -30,8 +28,6 @@
 .network-card em{color:var(--cyan);font-style:italic}
 .policy-body .cc-highlight{margin-top:18px;padding:14px 16px;background:#fff4f6;border:1px solid #ffd0dc;border-radius:12px;color:#7a1f33;font-size:.86rem;line-height:1.55}
 .policy-body .cc-note{margin-top:14px;color:#7a8aa0;font-size:.78rem;font-style:italic}
-
-/* ================= v3 — NO DIA DO EVENTO ================= */
 .experience-section{background:radial-gradient(circle at 82% 18%,rgba(255,25,220,.07),transparent 30%),linear-gradient(180deg,var(--bg),var(--bg2))}
 .experience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
 .experience-card .check-list{margin-top:6px}
@@ -44,8 +40,6 @@
 .ctf-body p{margin:12px 0 20px;color:#abb8cf;line-height:1.7;font-size:.92rem}
 .ctf-body a{margin-top:auto;color:#e7edff;font-size:.63rem;letter-spacing:.11em;text-transform:uppercase}
 .ctf-body a:hover{color:var(--pink)}
-
-/* ================= v3 — FILEIRAS DE PATROCINADORES ================= */
 .sponsor-walls{display:grid;gap:20px;margin-top:20px}
 .logo-card{flex:0 0 176px;border:1px solid color-mix(in srgb,var(--track-accent) 50%,rgba(90,130,205,.2));background:linear-gradient(180deg,rgba(11,20,43,.92),rgba(3,8,17,.98));border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
 .logo-card:hover{transform:translateY(-7px);border-color:var(--track-accent);box-shadow:0 18px 42px color-mix(in srgb,var(--track-accent) 16%,transparent)}
@@ -55,15 +49,12 @@
 .logo-placeholder{font-size:.56rem;letter-spacing:.14em;color:#7f93b4;text-transform:uppercase;text-align:center;padding:0 12px;line-height:1.5}
 .logo-body{padding:11px 13px 13px}
 .logo-name{margin-top:5px;font-weight:800;font-size:.88rem}
-
-/* ================= v3 — CONDUTA & PRIVACIDADE (painel claro + modais) ================= */
 .conduta-section{padding:96px 36px;background:radial-gradient(circle at 15% 20%,rgba(46,97,255,.08),transparent 32%),linear-gradient(180deg,var(--bg2),var(--bg))}
 .conduta-panel{max-width:var(--max);margin:0 auto;background:#f4f7fb;color:#10203b;border-radius:32px;padding:68px 62px;box-shadow:0 40px 120px rgba(0,0,0,.5),inset 0 0 0 1px rgba(16,32,59,.06)}
 .conduta-panel h2{color:#10203b}
 .conduta-panel h2 span{background:linear-gradient(90deg,#d80cad,#376cff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .policy-open{margin-top:20px;display:inline-flex;align-items:center;gap:10px;border:1px solid #1463b2;color:#1463b2;background:#fff;border-radius:999px;padding:12px 20px;font-size:.66rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;transition:.2s}
 .policy-open:hover{background:#1463b2;color:#fff;box-shadow:0 12px 30px rgba(20,99,178,.28)}
-/* modais com fade in e fade out (transicao suave de opacidade + escala) */
 .modal{position:fixed;inset:0;z-index:200;visibility:hidden;pointer-events:none;opacity:0;transition:opacity .34s ease,visibility 0s linear .34s}
 .modal.open{visibility:visible;pointer-events:auto;opacity:1;transition:opacity .34s ease}
 .modal-backdrop{position:absolute;inset:0;background:rgba(2,5,14,.82);backdrop-filter:blur(10px)}
@@ -73,8 +64,6 @@
 .modal-body{margin-top:18px}
 .modal-close{position:sticky;top:14px;float:right;width:40px;height:40px;border-radius:50%;border:1px solid rgba(16,32,59,.2);background:#fff;color:#10203b;font-size:1rem;font-weight:800;z-index:2;transition:.2s}
 .modal-close:hover{background:#10203b;color:#fff;transform:rotate(90deg)}
-
-/* ================= v3 — FOOTER + CONTATO + REDES ================= */
 .footer-title{font-size:clamp(1.9rem,3.4vw,3rem);margin:0 0 10px;letter-spacing:-.02em;line-height:1.05}
 .footer-title span{background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
 .footer-sub{color:#8295b5;margin:0 0 22px;font-size:.86rem;line-height:1.6}
@@ -92,8 +81,6 @@
 .social-btn:hover{color:#fff;border-color:var(--pink);box-shadow:0 0 22px rgba(255,25,220,.28);transform:translateY(-3px)}
 .social-btn svg{width:18px;height:18px}
 .footer-nav{max-width:var(--max);margin:44px auto 0;padding:22px 0 0;border-top:1px solid rgba(81,110,167,.2);position:relative;z-index:1}
-
-/* ================= v3 — CURSOR 4ROOT ================= */
 @media (pointer:fine){*,*::before,*::after{cursor:none !important}}
 @media (pointer:coarse),(max-width:768px){#cyber-cursor{display:none !important}}
 #cyber-cursor{position:fixed;top:0;left:0;width:24px;height:24px;pointer-events:none;z-index:999999;mix-blend-mode:difference;will-change:transform;opacity:1;transition:opacity .4s ease;transform:translate(-60px,-60px)}
@@ -102,21 +89,14 @@
 .cursor-glitch-effect{width:100%;height:100%;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M0 0 L18 6 L10 9 L6 18 Z' fill='%2311d1ff'/></svg>");background-repeat:no-repeat;background-position:top left}
 #cyber-cursor.glitch-active .cursor-glitch-effect{animation:cursor-flicker .25s steps(1,start) forwards}
 @keyframes cursor-flicker{0%{opacity:1;filter:none}25%{opacity:.7;filter:drop-shadow(2px 0 #ff19dc)}50%{opacity:.9;filter:drop-shadow(-2px 0 #2dd7ff)}75%{opacity:.5;filter:drop-shadow(1px -1px #ff19dc)}100%{opacity:1;filter:none}}
-
-/* ================= v3 — responsivas ================= */
 @media (max-width:900px){.experience-grid{grid-template-columns:1fr}.conduta-section{padding-left:20px;padding-right:20px}.conduta-panel{padding:48px 30px;border-radius:26px}}
 @media (max-width:620px){.ctf-image{height:160px}.conduta-panel{padding:38px 22px;border-radius:22px}.logo-card{flex-basis:150px}.logo-photo{height:100px}.modal-dialog{padding:30px 20px 26px;max-height:88vh}}
 @media (max-width:900px){.objectives-grid{grid-template-columns:1fr}}
-
-/* ================= v4 — navbar, letreiro, badges, scrollbar, warp ================= */
 .brand{margin-left:22px}
 .main-nav a{position:relative;padding:7px 2px}
 .main-nav a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--pink),var(--cyan));box-shadow:0 0 12px rgba(255,25,220,.65);transition:right .28s ease}
 .main-nav a:hover:after,.main-nav a:focus-visible:after{right:0}
-
 .hero-label-left{font-size:clamp(.8rem,1.35vw,1.06rem);letter-spacing:.16em;opacity:.95;color:#e9f4ff;text-shadow:0 0 16px rgba(17,209,255,.5),0 0 36px rgba(255,25,220,.22)}
-
-/* letreiro de palavras-chave */
 .keywords-marquee{position:relative;margin-top:26px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(90deg,rgba(255,25,220,.05),rgba(17,209,255,.05));overflow:hidden;padding:20px 0}
 .keywords-marquee:before,.keywords-marquee:after{content:"";position:absolute;top:0;bottom:0;width:150px;z-index:2;pointer-events:none}
 .keywords-marquee:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
@@ -126,17 +106,11 @@
 .marquee-group span{white-space:nowrap;font-weight:800;font-size:1.02rem;letter-spacing:.13em;text-transform:uppercase;color:#f2f7ff;text-shadow:0 0 18px rgba(17,209,255,.28)}
 .marquee-group i{font-style:normal;font-weight:800;color:var(--pink);text-shadow:0 0 12px rgba(255,25,220,.95),0 0 32px rgba(255,25,220,.55)}
 @keyframes bsb-marquee{to{transform:translateX(-50%)}}
-
-/* track-info com personagem correspondente */
 .track-head{display:flex;align-items:center;gap:13px;margin-bottom:14px}
 .track-head .track-no{margin-bottom:0}
 .track-fig{flex:0 0 auto;width:60px;height:60px;border-radius:50%;overflow:hidden;border:1px solid color-mix(in srgb,var(--track-accent) 75%,transparent);box-shadow:0 0 20px color-mix(in srgb,var(--track-accent) 32%,transparent)}
 .track-fig img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* banner de local dentro de O EVENTO (centralizado igual aos outros blocos) */
 .about-section .location-banner{margin:64px auto 0}
-
-/* scrollbar custom (tema do site) */
 html.fx-ready{scrollbar-width:none;-ms-overflow-style:none}
 html.fx-ready::-webkit-scrollbar,html.fx-ready body::-webkit-scrollbar{width:0;height:0;display:none}
 #fx-sb{position:fixed;right:0;top:0;width:10px;height:100%;z-index:40;touch-action:none;opacity:0;transition:opacity .8s ease .5s}
@@ -148,8 +122,6 @@ html.fx-ready #fx-sb{opacity:1}
 #fx-sb.sb-idle #fx-sb-thumb{opacity:0}
 #fx-sb.sb-drag{cursor:grabbing}
 #fx-sb.sb-drag #fx-sb-thumb{cursor:grabbing}
-
-
 @media (max-width:900px){
 .brand{margin-left:0}
 .track-fig{width:46px;height:46px}
@@ -168,18 +140,9 @@ html.fx-ready #fx-sb{opacity:1}
 #warp{transform:none!important}
 #fx-sb{display:none}
 }
-
-
-/* ================= v5 — loading, reveals, nav ativa, hero maior, nebulosa ================= */
-
-/* nebulosa cyberpunk no fundo global (mais contraste, menos escuro) */
 html::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url("assets/crops/nebula-bg.webp") center/cover no-repeat;opacity:.55}
 html.loader-lock{overflow:hidden}
-
-/* brilho da nebulosa sobre a arte do hero (mistura aditiva) */
 .hero:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:url("assets/crops/nebula-bg.webp") center/cover no-repeat;mix-blend-mode:screen;opacity:.5}
-
-/* tela de loading cinematografica: spinner estilo Google -> onda de choque na logo -> tag -> push-in final */
 #bsb-loader{position:fixed;inset:0;z-index:200000;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 42%,#0a1030 0%,#050816 55%,#020409 100%);transition:opacity .85s ease .12s,visibility .85s ease .12s}
 #bsb-loader.done{opacity:0;visibility:hidden;pointer-events:none}
 #bsb-loader:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 46%,rgba(105,215,255,.3),transparent 58%)}
@@ -190,7 +153,6 @@ html.loader-lock{overflow:hidden}
 #bsb-loader.done .loader-core{animation:loader-push .9s cubic-bezier(.66,0,.24,1) both}
 @keyframes loader-push{0%{transform:scale(1);filter:blur(0);opacity:1}100%{transform:scale(1.18);filter:blur(18px);opacity:0}}
 .loader-stage{position:relative;width:168px;height:168px;display:grid;place-items:center}
-/* fase 1: bolinhas girando estilo Google */
 .gspin{position:absolute;width:48px;height:48px;animation:gspin-out .4s cubic-bezier(.55,0,.85,.35) .95s both}
 @keyframes gspin-out{to{transform:scale(.15);opacity:0}}
 .gspin-rot{width:100%;height:100%;animation:gspin-rot 1.1s cubic-bezier(.5,.06,.5,.94) infinite}
@@ -200,7 +162,6 @@ html.loader-lock{overflow:hidden}
 .gspin i:nth-child(2){transform:rotate(90deg) translateY(-24px);background:var(--pink);box-shadow:0 0 16px var(--pink)}
 .gspin i:nth-child(3){transform:rotate(180deg) translateY(-24px);background:var(--violet);box-shadow:0 0 16px var(--violet)}
 .gspin i:nth-child(4){transform:rotate(270deg) translateY(-24px);background:#fff;box-shadow:0 0 14px rgba(255,255,255,.85)}
-/* fase 2: logo entra com onda de choque e aneis (um deles girando) */
 .loader-shock{position:absolute;width:126px;height:126px;border-radius:50%;border:2px solid rgba(45,215,255,.85);box-shadow:0 0 44px rgba(45,215,255,.45),inset 0 0 34px rgba(255,25,220,.22);opacity:0;animation:loader-shock 1s cubic-bezier(.2,.7,.3,1) 1.02s both}
 @keyframes loader-shock{0%{transform:scale(.18);opacity:0}16%{opacity:.95}100%{transform:scale(1.95);opacity:0}}
 .loader-ring{position:absolute;border-radius:50%;border:1px solid rgba(140,180,255,.18);opacity:0;animation:ring-in .7s ease 1.18s both}
@@ -213,33 +174,23 @@ html.loader-lock{overflow:hidden}
 .loader-logo-fallback{display:none;font-size:1.9rem;font-weight:800;color:#fff;opacity:0;animation:logo-in .85s cubic-bezier(.16,.84,.3,1) 1.05s both;text-shadow:0 0 34px rgba(17,209,255,.55)}
 .loader-logo-img.image-error + .loader-logo-fallback{display:block}
 .loader-logo-fallback span{background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
-/* fase 3: tag com tracking cinematografico */
 .loader-tag{font-family:"Alice in Wonderland",cursive;color:#dceeff;font-size:clamp(1.25rem,2.7vw,1.85rem);letter-spacing:.14em;opacity:0;text-shadow:0 0 22px rgba(17,209,255,.5);animation:tag-in .95s cubic-bezier(.19,1,.22,1) 1.42s both}
 @keyframes tag-in{0%{opacity:0;letter-spacing:.36em;transform:translateY(12px);filter:blur(8px)}100%{opacity:1;letter-spacing:.14em;transform:translateY(0);filter:blur(0)}}
 .loader-corner{position:absolute;right:28px;bottom:26px}
 .loader-bar{width:min(220px,42vw);height:3px;border-radius:3px;background:rgba(90,127,205,.2);overflow:hidden}
 .loader-bar i{display:block;height:100%;width:40%;border-radius:3px;background:linear-gradient(90deg,var(--pink),var(--violet),var(--cyan));box-shadow:0 0 12px rgba(255,25,220,.55);animation:loader-slide 1.3s ease-in-out infinite}
 @keyframes loader-slide{0%{transform:translateX(-110%)}100%{transform:translateX(340%)}}
-
-/* item ativo no navbar */
 .main-nav a.active{color:#fff;text-shadow:0 0 15px var(--cyan)}
 .main-nav a.active:after{right:0}
-
-/* FOLLOW THE WHITE RABBIT — exclusivo na fonte Alice in Wonderland (enviada), maior e mais à esquerda */
 .hero-label-left{left:auto;right:10vw;top:40%;text-align:right;font-family:"Alice in Wonderland","Space Grotesk",cursive;font-weight:400;font-size:clamp(1.8rem,4.2vw,3.7rem);line-height:0.69;letter-spacing:.045em;text-transform:uppercase;opacity:1;color:#eef6ff;text-shadow:0 0 18px rgba(17,209,255,.55),0 0 46px rgba(17,209,255,.3),0 0 92px rgba(255,25,220,.3)}
-
-/* SCROLL TO EXPLORE — maior e animado */
 .hero-scroll{right:34px;bottom:36px;font-size:.78rem;letter-spacing:.24em;color:#d7e6ff;gap:13px;animation:hero-scroll-float 3.2s ease-in-out infinite}
 .hero-scroll span{position:relative;width:46px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--pink));overflow:visible;animation:scroll-line-pulse 2.2s ease-in-out infinite}
 .hero-scroll span:after{content:"";position:absolute;right:0;top:-2px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px var(--cyan),0 0 22px var(--pink);animation:scroll-dot 2.2s ease-in-out infinite}
 @keyframes hero-scroll-float{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 @keyframes scroll-line-pulse{0%,100%{transform:scaleX(.55);opacity:.55}50%{transform:scaleX(1);opacity:1}}
 @keyframes scroll-dot{0%{right:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{right:calc(100% - 6px);opacity:0}}
-
-/* animações de entrada (reveal) */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,.84,.3,1),transform .8s cubic-bezier(.16,.84,.3,1);transition-delay:var(--rd,0ms)}
 .reveal.visible{opacity:1;transform:none}
-
 @media (max-width:900px){
 .hero-scroll{font-size:.66rem;right:22px;bottom:24px}
 .hero-scroll span{width:34px}
@@ -249,30 +200,18 @@ html.loader-lock{overflow:hidden}
 .hero-scroll,.hero-scroll span,.hero-scroll span:after,.hero-scroll span i,.loader-bar i,.orbit-dot,.loader-core{animation:none}
 .modal,.modal-dialog{transition:none}
 }
-
-/* ================= v6 — marquee full, setas no scroll, conduta full, modal do palestrante ================= */
-
-/* letreiro de palavras-chave: pagina toda, sem interacao com o mouse */
 .about-section .keywords-marquee{width:100vw;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);margin-top:56px;border-radius:0;border-left:0;border-right:0}
-
-/* SCROLL TO EXPLORE com setinhas para baixo */
 .hero-scroll span{width:auto;height:auto;background:none;overflow:visible;display:flex;flex-direction:column;align-items:center;gap:2px;animation:none}
 .hero-scroll span:after{display:none}
 .hero-scroll span i{display:block;width:9px;height:9px;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg);filter:drop-shadow(0 0 7px rgba(17,209,255,.85));animation:scroll-arrow 1.7s ease-in-out infinite}
 .hero-scroll span i:last-child{margin-top:-4px;animation-delay:.22s}
 @keyframes scroll-arrow{0%,100%{opacity:.28;transform:translateY(-2px) rotate(45deg)}50%{opacity:1;transform:translateY(2px) rotate(45deg)}}
-
-/* conduta: branco ocupando a pagina com cantos arredondados */
 .conduta-section{padding:22px 14px 28px;background:transparent;border-top:0}
 .conduta-panel{max-width:none;margin:0;background:#f4f7fb;border-radius:46px;box-shadow:0 36px 120px rgba(0,0,0,.5),inset 0 0 0 1px rgba(16,32,59,.05);padding:96px 36px 104px}
 .conduta-panel>*{max-width:var(--max);margin-left:auto;margin-right:auto}
-
-/* card de palestrante clicavel */
 .speaker-card{cursor:pointer}
 .speaker-card:focus-visible{outline:2px solid var(--track-accent);outline-offset:3px}
 .speaker-photo img{-webkit-user-drag:none;user-select:none}
-
-/* modal do palestrante refinado (escuro, cor da trilha, sem botoes) */
 .speaker-dialog{width:min(780px,calc(100% - 32px));background:linear-gradient(165deg,#0e1a38 0%,#070d1e 55%,#050a18 100%);color:var(--ink);border:1px solid color-mix(in srgb,var(--spk-accent,#11d1ff) 42%,rgba(90,130,205,.32));box-shadow:0 60px 160px rgba(0,0,0,.72),0 0 110px color-mix(in srgb,var(--spk-accent,#11d1ff) 14%,transparent)}
 .speaker-dialog:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--spk-accent,#11d1ff),transparent);z-index:1}
 .speaker-dialog .modal-close{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.28);color:#fff}
@@ -289,7 +228,6 @@ html.loader-lock{overflow:hidden}
 .speaker-modal-info>p{color:#a7b5d0;line-height:1.7;font-size:.9rem;margin:0 0 10px}
 .speaker-modal-note{margin:14px 0 0;padding:14px 16px;border:1px solid color-mix(in srgb,var(--spk-accent,#11d1ff) 28%,rgba(90,130,205,.22));border-left:3px solid var(--spk-accent,#11d1ff);border-radius:12px;background:color-mix(in srgb,var(--spk-accent,#11d1ff) 7%,rgba(255,255,255,.015));color:#9fb0cf;font-size:.84rem;line-height:1.65}
 .speaker-modal-note strong{color:#e5edff}
-
 @media (max-width:900px){
 .conduta-panel{padding:64px 20px 72px}
 .speaker-modal-grid{grid-template-columns:1fr}
@@ -301,8 +239,6 @@ html.loader-lock{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
 .hero-scroll span i{animation:none}
 }
-
-/* ================= v7 — cards refinados, hover do arraste, responsivas ================= */
 .speaker-card{position:relative;border-radius:18px}
 .speaker-card:before{content:"";position:absolute;top:0;left:12%;right:12%;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--track-accent),transparent);opacity:.9;z-index:2;transition:left .3s ease,right .3s ease,opacity .3s ease}
 .speaker-card:hover:before,.speaker-card:focus-visible:before{left:0;right:0;opacity:1}
@@ -316,12 +252,9 @@ html.loader-lock{overflow:hidden}
 .speaker-role{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:#93a3c0;line-height:1.5}
 .speaker-chip{font-size:.55rem;padding:4px 9px;gap:6px}
 .speaker-chip:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
-
-/* hover do "Arraste para os lados →" */
 .track-desc-tag .drag-arrow{display:inline-block;margin-left:2px;transition:transform .3s cubic-bezier(.2,.9,.3,1.35),text-shadow .3s ease,color .3s ease}
 .track-row:hover .track-desc-tag{color:#fff;text-shadow:0 0 18px color-mix(in srgb,var(--track-accent,#11d1ff) 65%,transparent)}
 .track-row:hover .track-desc-tag .drag-arrow{transform:translateX(8px);color:var(--track-accent,#11d1ff);text-shadow:0 0 12px currentColor}
-
 @media (max-width:900px){
 .conduta-section{padding:16px 14px 22px}
 .conduta-panel{border-radius:32px;padding:64px 26px 72px}
@@ -337,10 +270,6 @@ html.loader-lock{overflow:hidden}
 .loader-logo-img{width:78px}
 .loader-tag{font-size:1.15rem}
 }
-
-/* ================= v8 — painel claro no Mapa da jornada, entrada cinematografica, halo no rabbit, glitches aleatorios, imagens leves ================= */
-
-/* Mapa da jornada: mesmo tratamento da Conduta (branco de ponta a ponta, cantos arredondados) */
 .program-section{padding:22px 14px 28px;background:transparent;border-top:0}
 .program-panel{max-width:none;margin:0;background:#f4f7fb;color:#10203b;border-radius:46px;box-shadow:0 36px 120px rgba(0,0,0,.5),inset 0 0 0 1px rgba(16,32,59,.05);padding:96px 36px 104px}
 .program-panel>*{max-width:var(--max);margin-left:auto;margin-right:auto}
@@ -355,20 +284,14 @@ html.loader-lock{overflow:hidden}
 .program-card p{color:#596b84}
 .program-card a{color:#1463b2;transition:color .2s}
 .program-card a:hover{color:#d80cad}
-
-/* Follow the white rabbit: sem caixa alta, mais para a direita, halo + sombra para destacar do fundo */
 .hero-label-left{right:4vw;text-transform:none;letter-spacing:.03em;filter:drop-shadow(0 3px 16px rgba(0,0,0,.65))}
 .hero-label-left:before{content:"";position:absolute;inset:-.9em -1.2em;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(3,7,20,.8),rgba(3,7,20,.44) 50%,transparent 74%);filter:blur(10px)}
-
-/* entrada cinematografica: reveals com blur/scale + focus pull no hero depois do loading */
 .reveal{opacity:0;transform:translateY(36px) scale(.988);filter:blur(10px);transition:opacity 1s cubic-bezier(.19,1,.22,1),transform 1s cubic-bezier(.19,1,.22,1),filter 1s cubic-bezier(.19,1,.22,1);transition-delay:var(--rd,0ms)}
 .reveal.visible{opacity:1;transform:none;filter:none}
 .hero-image{transition:transform 1.9s cubic-bezier(.16,.84,.3,1),filter 1.9s cubic-bezier(.16,.84,.3,1)}
 html.loader-lock .hero-image{transform:scale(1.16);filter:blur(14px) saturate(1.15)}
 .hero:after{transition:opacity 1.6s ease}
 html.loader-lock .hero:after{opacity:.88}
-
-/* glitches aleatorios: elementos com [data-glitch] recebem .glitch-on via JS */
 .glitch-on{animation:bsb-glitch .38s steps(1,end) 1}
 @keyframes bsb-glitch{
 0%{transform:translate(0);clip-path:inset(0);filter:none;text-shadow:0 0 0 transparent}
@@ -379,7 +302,6 @@ html.loader-lock .hero:after{opacity:.88}
 72%{transform:translate(-2px,-1px);clip-path:inset(34% 0 30% 0);text-shadow:2px 0 var(--cyan),-2px 0 var(--pink);filter:saturate(1.5)}
 100%{transform:translate(0);clip-path:inset(0);filter:none;text-shadow:0 0 0 transparent}
 }
-
 @media (max-width:900px){
 .program-panel{border-radius:32px;padding:64px 20px 72px}
 }
@@ -396,23 +318,12 @@ html.loader-lock .hero:after{opacity:.5}
 .glitch-on{animation:none!important}
 .program-card{transition:none}
 }
-
-
-/* ================= v9 — ghost rabbit glitch no hero, botoes recriados, hovers pedidos ================= */
-
-/* ---- coelho fantasma: o anexo (hero-rabbit-hole.png) sobre o coelho da arte de fundo, com glitch ---- */
 .hero-rabbit-ghost{position:absolute;z-index:1;left:71%;top:52%;height:106%;aspect-ratio:1/1;transform:translate(-50%,-50%);background:url("assets/crops/hero-rabbit-hole.png") center/contain no-repeat;mix-blend-mode:screen;opacity:.9;pointer-events:none;animation:rabbit-ghost-float 5.2s ease-in-out infinite}
-
-/* copia cromatica deslocada (aberracao RGB constante) */
 .hero-rabbit-ghost:after{content:"";position:absolute;inset:0;background:inherit;opacity:.32;filter:hue-rotate(150deg) saturate(1.9) brightness(1.12);transform:translate(9px,-1px)}
-
 @keyframes rabbit-ghost-float{0%,100%{transform:translate(-50%,-50%)}
 50%{transform:translate(-51.1%,-49%)}
 }
-
-/* rajada de glitch (classe .glitch-burst aplicada por JS a cada 3.4-7.6s) */
 .hero-rabbit-ghost.glitch-burst{animation:rabbit-ghost-float 5.2s ease-in-out infinite,rabbit-ghost-burst 2.6s steps(1,end) 1}
-
 @keyframes rabbit-ghost-burst{
 0%{clip-path:inset(0);transform:translate(-50%,-50%);opacity:.9;filter:none}
 7%{clip-path:inset(6% 0 64% 0);transform:translate(-53%,-51.5%);opacity:.96;filter:hue-rotate(32deg) saturate(2.2) brightness(1.15)}
@@ -424,77 +335,40 @@ html.loader-lock .hero:after{opacity:.5}
 43%{clip-path:inset(0);transform:translate(-50%,-50%);filter:none}
 100%{clip-path:inset(0);transform:translate(-50%,-50%);opacity:.9;filter:none}
 }
-
-
-/* ---- hover no banner da data 14 DE NOVEMBRO DE 2026 - BRASILIA - LOCAL EM BREVE ---- */
 .hero-meta{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease,background .3s ease;cursor:default}
-
 .hero-meta:hover{transform:translateY(-3px);border-color:rgba(255,25,220,.52);background:rgba(9,3,20,.55);box-shadow:0 18px 44px rgba(0,0,0,.38),0 0 32px rgba(255,25,220,.2),inset 0 0 20px rgba(255,25,220,.09)}
-
 .hero-meta:hover span{color:#fff;text-shadow:0 0 12px var(--pink),0 0 26px rgba(255,25,220,.6)}
-
-
-/* ---- hover reforçado no "Arraste para os lados →" (direto no texto, alem da linha) ---- */
 .track-desc-tag{cursor:default}
-
 .track-desc-tag .drag-arrow{animation:drag-nudge 2.6s ease-in-out infinite}
-
 .track-desc-tag:hover{color:#fff;text-shadow:0 0 18px color-mix(in srgb,var(--track-accent,#11d1ff) 72%,transparent)}
-
 .track-desc-tag:hover .drag-arrow{transform:translateX(10px);color:var(--track-accent,#11d1ff);text-shadow:0 0 14px currentColor}
-
 @keyframes drag-nudge{0%,100%{transform:translateX(0)}
 50%{transform:translateX(5px)}
 }
-
-
-/* Coelho Branco no card da trilha 01: zoom no coelho do anexo (muito espaco vazio na arte) */
 .theme-rabbit .theme-image{background:radial-gradient(circle at 50% 42%,rgba(255,25,220,.14),transparent 62%),#04060f}
 .theme-rabbit .theme-image img{object-position:center 30%;transform:scale(1.62)}
 .theme-rabbit:hover .theme-image img{transform:scale(1.7)}
-
-
-/* responsivas do ghost (segue o coelho da arte, que muda de lugar com object-position/cover) */
 @media (max-width:1120px){
 .hero-rabbit-ghost{height:108%;left:78%;top:52%}
-
 }
-
 @media (max-width:900px){
 .hero-rabbit-ghost{height:108%;left:82%;top:52%;opacity:.85}
-
 }
-
 @media (max-width:620px){
 .hero-rabbit-ghost{height:60%;left:40%;top:49%;opacity:.85}
-
 .hero-rabbit-ghost:after{transform:translate(6px,-1px)}
-
 }
-
 @media (prefers-reduced-motion:reduce){
 .hero-rabbit-ghost,.hero-rabbit-ghost:after,.track-desc-tag .drag-arrow{animation:none!important}
-
 .hero-rabbit-ghost.glitch-burst{animation:none!important}
-
 .btn,.policy-open,.hero-meta,.rail-controls button{transition:none}
-
 }
-
-
-/* ================= v10 — h2 em linha unica, coelho oculto (so no glitch), entrada ABSOLUTE CINEMA, botoes ingresso ================= */
-
-/* ---- h2: sempre em uma unica linha, sem quebra de linha ---- */
 h2{white-space:nowrap;font-size:clamp(1.4rem,3.6vw,3.5rem)}
 .sponsor-copy h2{font-size:clamp(.95rem,2.3vw,2.05rem)}
 .conduta-panel h2{font-size:clamp(.7rem,3.6vw,3.3rem)}
 @media (max-width:620px){h2{font-size:clamp(1.3rem,6vw,2.9rem)}}
-
-/* ---- coelho fantasma OCULTO: aparece somente durante a rajada de glitch ---- */
 .hero-rabbit-ghost{animation:none;opacity:0}
 .hero-rabbit-ghost.glitch-burst{animation:rabbit-ghost-burst 2.6s steps(1,end) 1;opacity:1}
-
-/* ---- entrada ABSOLUTE CINEMA: iris de abertura, barras letterbox, sweep de luz, cascata de letras, flip do ingresso ---- */
 .cine-iris,.cine-bar,.cine-sweep{display:none}
 .cine-iris{position:fixed;inset:0;z-index:190000;pointer-events:none;visibility:hidden}
 .cine-iris span{position:absolute;left:50%;top:50%;width:20vmax;height:20vmax;border-radius:50%;border:1px solid rgba(45,215,255,.3);box-shadow:0 0 0 300vmax #010208,inset 0 0 90px 26px rgba(1,2,8,.92);transform:translate(-50%,-50%) scale(1)}
@@ -519,24 +393,17 @@ html.js-cine.cine-done .hero-label-left .ch{opacity:1;transform:none;filter:none
 @keyframes ch-in{to{opacity:1;transform:none;filter:none}}
 .hero-meta.reveal{transform:translateY(30px) perspective(700px) rotateX(-26deg);transform-origin:50% 100%}
 .hero-meta.reveal.visible{transform:none}
-
-/* ---- banner da data vira ingresso: picote lateral + selo ADMIT ONE + hover ludico ---- */
 .hero-meta{position:relative;border-radius:14px;padding-right:54px}
 .hero-meta:before{content:"";position:absolute;top:7px;bottom:7px;right:40px;width:1px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.38) 0 4px,transparent 4px 9px)}
 .hero-meta:after{content:"VERSION · 2026";position:absolute;top:-11px;right:14px;padding:3px 10px;border-radius:99px;background:linear-gradient(90deg,var(--pink),#8f36ff);color:#fff;font-size:.5rem;font-weight:800;letter-spacing:.2em;box-shadow:0 6px 16px rgba(255,25,220,.35);transform:rotate(2.5deg)}
 .hero-meta:hover{transform:translateY(-4px) rotate(-.6deg)}
 @media (max-width:620px){.hero-meta{padding-right:14px}.hero-meta:before,.hero-meta:after{display:none}}
-
 @media (prefers-reduced-motion:reduce){
 .cine-iris,.cine-bar,.cine-sweep{display:none!important}
 html.js-cine .hero-label-left .ch,html.js-cine.cine-open .hero-label-left .ch,html.js-cine.cine-done .hero-label-left .ch{opacity:1;transform:none;filter:none;animation:none}
 .hero-meta.reveal{transform:none}
 .btn,.policy-open,.hero-meta,.rail-controls button{transition:none;transform:none}
 }
-
-/* ================= v11 — glow no rodape inteiro, botoes simples de volta com hover dinamico, mobile 100% centralizado ================= */
-
-/* ---- botoes: modelo simples original, agora com hover dinamico ---- */
 .btn{transition:transform .22s ease,box-shadow .22s ease,filter .22s ease}
 .btn:hover,.btn:focus-visible{transform:translateY(-3px)}
 .btn:active{transform:translateY(-1px) scale(.98)}
@@ -546,8 +413,6 @@ html.js-cine .hero-label-left .ch,html.js-cine.cine-open .hero-label-left .ch,ht
 .btn-outline:hover,.btn-outline:focus-visible{border-color:var(--cyan);background:rgba(10,22,44,.55);color:#fff;box-shadow:0 0 28px rgba(17,209,255,.36),inset 0 0 18px rgba(17,209,255,.12);transform:translateY(-3px)}
 .rail-controls button{transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
 .rail-controls button:hover{background:color-mix(in srgb,var(--track-accent) 26%,rgba(2,5,15,.82));transform:translateY(-2px);box-shadow:0 0 16px color-mix(in srgb,var(--track-accent) 42%,transparent)}
-
-/* ---- mobile 100%: arte retrato dedicada no hero e tudo centralizado ---- */
 @media (max-width:620px){
 .hero-image{object-position:center}
 .poster-panel{display:none}
@@ -568,4 +433,27 @@ html.js-cine .hero-label-left .ch,html.js-cine.cine-open .hero-label-left .ch,ht
 .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:6px}
 .speaker-modal-photo{margin:0 auto}
 .modal-dialog{padding:34px 20px}
+}
+.rail-area{min-width:0}
+.rail{touch-action:pan-x pan-y}
+.speaker-card:active,.logo-card:active{transform:scale(.98)}
+@media (max-width:900px){
+.main-nav{max-height:calc(100vh - 68px);max-height:calc(100svh - 68px);overflow-y:auto}
+.main-nav a{font-size:.75rem;padding:10px 0}
+.rail-head{margin-bottom:12px}
+.rail-controls button{width:40px;height:40px}
+.rail-controls{gap:10px}
+}
+@media (max-width:620px){
+.section{padding:72px 16px}
+.rail{padding:6px 4px 14px}
+.rail-title{font-size:.6rem}
+.track-row{padding:16px;gap:16px;border-radius:18px}
+.track-info{padding:2px 2px 16px}
+.track-info h3{font-size:1.45rem}
+.speaker-card{flex-basis:172px}
+.speaker-photo{height:150px}
+.sponsor-hero{min-height:540px}
+.hero-actions .btn{min-height:50px}
+.menu-toggle{width:46px;height:46px}
 }
