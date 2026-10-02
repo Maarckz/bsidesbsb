@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050816">
+  <meta name="description" content="BSidesBSB 2026: Down the Rabbit Hole. A conferência de segurança da informação feita pela comunidade e para a comunidade hacker de Brasília.">
+  <title>BSidesBSB 2026: Down the Rabbit Hole</title>
+  <link rel="preconnect" href="https://bsidesbsb.com" crossorigin>
+  <link rel="preload" href="assets/crops/hero-rabbit-hole.webp" as="image" fetchpriority="high" media="(min-width:621px)">
+  <link rel="preload" href="assets/crops/hero-mobile.webp" as="image" fetchpriority="high" media="(max-width:620px)">
+  <link rel="preload" href="assets/fonts/Alice-in-Wonderland.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="bsb-loader" aria-hidden="true">
+    <div class="loader-core">
+      <div class="loader-stage">
+        <div class="gspin"><div class="gspin-rot"><i></i><i></i><i></i><i></i></div></div>
+        <span class="loader-shock"></span>
+        <span class="loader-ring r1"></span>
+        <span class="loader-ring r2"></span>
+        <img class="loader-logo-img" src="assets/crops/logo.png" alt="" onerror="this.classList.add('image-error')">
+        <span class="loader-logo-fallback">BSides<span>BSB</span></span>
+      </div>
+      <div class="loader-tag">DOWN THE RABBIT HOLE</div>
+    </div>
+    <div class="loader-corner"><div class="loader-bar"><i></i></div></div>
+  </div>
+  <div class="cine-iris" aria-hidden="true"><span></span></div>
+  <div class="cine-bar top" aria-hidden="true"></div>
+  <div class="cine-bar bottom" aria-hidden="true"></div>
+  <div id="cyber-cursor" aria-hidden="true"><div class="cursor-glitch-effect"></div></div>
+
+  <header class="site-header" id="header">
+    <a class="brand" href="#home" aria-label="BSidesBSB · início">
+      <img src="assets/crops/logo.png" alt="BSidesBSB" data-glitch>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#palestrantes">Palestrantes</a>
+      <a href="#trilhas">Trilhas</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#ctf">CTF</a>
+      <a href="#historico">Histórico</a>
+      <a href="#patrocinadores">Patrocínio</a>
+      <a href="#conduta">Conduta</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </header>
+
+  <div id="warp">
+  <main>
+    <section id="home" class="hero">
+      <picture>
+        <source media="(max-width:620px)" srcset="assets/crops/hero-mobile.webp">
+        <img class="hero-image" src="assets/crops/hero-rabbit-hole.webp" alt="Arte neon do coelho entrando em um portal futurista" loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="hero-rabbit-ghost" aria-hidden="true"></div>
+      <div class="cine-sweep" aria-hidden="true"></div>
+      <div class="hero-ui">
+        <div class="hero-meta" data-glitch>14 DE NOVEMBRO DE 2026 <span>•</span> BRASÍLIA <span>•</span> LOCAL EM BREVE</div>
+        <div class="hero-copy">
+          <p>A conferência de segurança da informação feita pela comunidade e para a comunidade hacker de Brasília. Siga o coelho branco até o outro lado.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://forms.gle/KVSwddLpnSnXQfta9" target="_blank" rel="noopener noreferrer">Chamada de palestras ↗</a>
+            <a class="btn btn-outline" href="#sobre">Entrar na toca ↓</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-label hero-label-left" data-glitch>Follow the<br>white rabbit</div>
+      <a class="hero-scroll" href="#palestrantes"><span><i></i><i></i></span>SCROLL TO EXPLORE</a>
+    </section>
+
+    <section id="sobre" class="section about-section">
+      <div class="section-intro">
+        <div class="eyebrow">O EVENTO</div>
+        <h2 data-glitch>Sobre o <span>BSidesBSB</span></h2>
+        <p class="lead">O principal encontro de segurança da informação de Brasília: feito pela comunidade, para a comunidade. Em 2026, descemos juntos pela toca do coelho: 14 de novembro, local em breve.</p>
+      </div>
+      <div class="about-layout">
+        <div class="poster-panel">
+          <div class="panel-label">PÔSTER OFICIAL · 2026</div>
+          <img src="assets/crops/banner.png" alt="Pôster oficial BSidesBSB 2026: Down the Rabbit Hole" loading="lazy">
+        </div>
+        <div class="about-copy">
+          <article class="glass-card mission-card">
+            <div class="card-kicker">NOSSA MISSÃO</div>
+            <h3>O que nos move</h3>
+            <p>O BSidesBSB reúne profissionais, pesquisadores e entusiastas de segurança da informação para compartilhar conhecimento, debater tendências e fortalecer a comunidade local de Brasília.</p>
+            <p>Promovemos um espaço colaborativo e aberto, onde todos podem contribuir com suas experiências e aprender com especialistas de diversas áreas de cibersegurança: sem a barreira do palco-plateia, sem a hierarquia de quem fala e quem escuta.</p>
+          </article>
+          <article class="glass-card manifesto-card">
+            <div class="card-kicker">MANIFESTO</div>
+            <h3>Comunidade antes de tudo</h3>
+            <p>Acreditamos em aprendizado aberto, conexões reais e na cultura hacker como força para transformar pessoas e organizações. Aqui não importa se você é estagiário, blue team, red team, estudante ou CISO: o que vale é a profundidade técnica e o respeito pelo próximo.</p>
+            <p>Palco e plateia se misturam: todo mundo soma, todo mundo aprende. Esse é o <em>Down the Rabbit Hole</em>: descer fundo juntos, em vez de descer sozinho.</p>
+          </article>
+        </div>
+      </div>
+      <div class="location-banner">
+        <div><div class="eyebrow">LOCAL</div><h3>Brasília <span>14.11.2026</span></h3><p>O local exato será divulgado em breve, com mapa, acesso e dicas de hospedagem.</p></div>
+        <img src="assets/crops/city-skyline.jpg" alt="Skyline futurista inspirado em Brasília" loading="lazy">
+      </div>
+      <div class="keywords-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span>Conhecimento técnico</span><i>||</i><span>Networking real</span><i>||</i><span>Inovação &amp; pesquisa</span><i>||</i><span>Comunidade local</span><i>||</i>
+          </div>
+          <div class="marquee-group">
+            <span>Conhecimento técnico</span><i>||</i><span>Networking real</span><i>||</i><span>Inovação &amp; pesquisa</span><i>||</i><span>Comunidade local</span><i>||</i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="palestrantes" class="section speakers-section">
+      <div class="section-head-row">
+        <div>
+          <div class="eyebrow">PALESTRANTES</div>
+          <h2 data-glitch>Entre nas <span>tocas</span>.</h2>
+        </div>
+        <p>Quatro trilhas. Cinco espaços por grupo. Arraste, deslize ou use as setas.</p>
+      </div>
+      <div id="tracks" class="track-stack"></div>
+    </section>
+
+    <section id="trilhas" class="section dark-media-section">
+      <div class="section-head-row">
+        <div>
+          <div class="eyebrow">AS 4 TRILHAS</div>
+          <h2 data-glitch>Cada trilha é um <span>mundo</span>.</h2>
+        </div>
+        <p>Do conceito ao exploit, do patch ao painel da comunidade: cada toca tem sua linguagem e seu ritmo.</p>
+      </div>
+      <div class="theme-grid">
+        <article class="theme-card theme-rabbit"><div class="theme-image"><img src="assets/crops/hero-rabbit-hole.png" alt="Coelho Branco cibernético em neon" loading="lazy"></div><div><span>01</span><h3>Coelho Branco</h3><p>Keynotes e talks principais: as grandes ideias que abrem a toca e guiam a comunidade pelo buraco abaixo. Pensamentos longos, visões amplas e ideias que vale a pena discutir no corredor depois: keynote de abertura, panorama de ameaças do ano, cultura hacker e tendências da segurança.</p></div></article>
+        <article class="theme-card theme-cat"><div class="theme-image"><img src="assets/crops/cheshire.jpg" alt="Gato de Cheshire em estética neon" loading="lazy"></div><div><span>02</span><h3>Gato de Cheshire</h3><p>Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro. Pensamento de atacante: explorar, contornar, escalar e desviar, do web/pwn/kernel ao cloud, passando por engenharia social e OSINT.</p></div></article>
+        <article class="theme-card theme-queen"><div class="theme-image"><img src="assets/crops/queen.jpg" alt="Rainha de Copas em estética neon" loading="lazy"></div><div><span>03</span><h3>Rainha de Copas</h3><p>Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos. O lado que mantém a organização viva depois que o atacante entra: threat hunting, DFIR, forense digital e GRC.</p></div></article>
+        <article class="theme-card theme-hatter"><div class="theme-image"><img src="assets/crops/hatter.jpg" alt="Chapeleiro em estética neon" loading="lazy"></div><div><span>04</span><h3>Chapeleiro</h3><p>Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático. Mão na massa: todo mundo aprende fazendo, errando e refazendo. Workshops práticos, labs ao vivo, lightning talks de 10 min e painel aberto da comunidade.</p></div></article>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section experience-section">
+      <div class="section-head-row">
+        <div>
+          <div class="eyebrow">NO DIA DO EVENTO</div>
+          <h2 data-glitch>Experiência <span>imersiva</span>.</h2>
+        </div>
+        <p>Um dia inteiro dentro da toca: talks, CTF, villages e a comunidade hacker de Brasília em um só lugar.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="glass-card experience-card">
+          <div class="card-kicker">PROGRAMAÇÃO</div>
+          <h3>O que você encontra</h3>
+          <ul class="check-list">
+            <li>Talks técnicas e hands-on em 4 trilhas paralelas</li>
+            <li>CTF oficial durante o evento com prêmios</li>
+            <li>Villages temáticas e labs ao vivo</li>
+            <li>Networking com a cena local de Brasília</li>
+            <li>Espaço para pesquisadores e estudantes</li>
+            <li>Painel da comunidade aberto para todos</li>
+          </ul>
+        </article>
+        <article class="glass-card ctf-card" id="ctf">
+          <div class="ctf-image"><img src="assets/crops/falling-tunnel.jpg" alt="Túnel de dados neon · CTF BSidesBSB" loading="lazy"></div>
+          <div class="ctf-body">
+            <div class="card-kicker">COMPETIÇÃO COM PRÊMIOS</div>
+            <h3 class="ctf-title" data-glitch>CTF</h3>
+            <p>Competição oficial durante o evento, com desafios de web, pwn, crypto, forense, OSINT e misc: para todos os níveis, do iniciante ao avançado. Inscrição na hora, individual ou em equipe. Prêmios para o top 3.</p>
+            <a href="#contato">QUERO SER AVISADO →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="agenda" class="section program-section">
+      <div class="program-panel">
+      <div class="section-head-row">
+        <div><div class="eyebrow">O QUE ROLA NA TOCA</div><h2 data-glitch>Mapa da <span>jornada</span>.</h2></div>
+        <p>Lineup, agenda, competição, inscrições e local: o mapa completo da toca em 2026.</p>
+      </div>
+      <div class="program-grid">
+        <article class="program-card"><span>01</span><div class="program-image"><img src="assets/crops/portal.jpg" alt="Portal neon" loading="lazy"></div><h3>Palestrantes</h3><p>A lineup completa da edição 2026 será anunciada em breve: 4 trilhas, 16+ palestras, keynotes, workshops e lightning talks.</p><a href="#palestrantes">QUERO PALESTRAR →</a></article>
+        <article class="program-card"><span>02</span><div class="program-image"><img src="assets/crops/clock.jpg" alt="Relógio futurista" loading="lazy"></div><h3>Agenda</h3><p>A programação completa da edição 2026 será divulgada em breve. Fique de olho nas redes sociais para não perder.</p><a href="#contato">QUERO SER AVISADO →</a></article>
+        <article class="program-card"><span>03</span><div class="program-image"><img src="assets/crops/falling-tunnel.jpg" alt="Túnel de dados" loading="lazy"></div><h3>CTF</h3><p>Competição oficial durante o evento, com prêmios. Desafios de web, pwn, crypto, forense, OSINT e misc: para todos os níveis.</p><a href="#contato">QUERO SER AVISADO →</a></article>
+        <article class="program-card" id="inscricao"><span>04</span><div class="program-image"><img src="assets/crops/neon-door.jpg" alt="Porta neon" loading="lazy"></div><h3>Inscrição</h3><p>As inscrições para o BSidesBSB 2026 serão abertas em breve. Acompanhe pelas redes sociais: vagas limitadas.</p><a href="#contato">QUERO SER AVISADO →</a></article>
+        <article class="program-card" id="local"><span>05</span><div class="program-image"><img src="assets/crops/city-skyline.jpg" alt="Brasília neon" loading="lazy"></div><h3>Local</h3><p>Brasília. O local do evento será anunciado em breve, com mapa, acesso e dicas de hospedagem.</p><a href="#contato">EM BREVE →</a></article>
+      </div>
+      </div>
+    </section>
+
+    <section id="historico" class="section history-section">
+      <div class="section-head-row"><div><div class="eyebrow">HISTÓRICO</div><h2 data-glitch>De onde <span>viemos</span>.</h2></div><p>Duas edições, uma só jornada: descer a toca do coelho junto com a cena de Brasília.</p></div>
+      <div class="history-grid">
+        <article class="history-card"><div class="history-year">// 2025</div><h3>Primeira edição</h3><p>A edição que provou que Brasília tem cena: 19 palestrantes, dois palcos em paralelo, três villages temáticas e a primeira competição CTF oficial da BSidesBSB. O ponto de partida da nossa toca.</p><div class="history-stats"><b>19 <small>especialistas</small></b><b>2 <small>palcos</small></b><b>3 <small>villages</small></b><b>1 <small>CTF</small></b></div></article>
+        <article class="history-card is-current"><div class="history-year">// 2026</div><h3>Down the Rabbit Hole</h3><p>Aprofundamos a toca: quatro trilhas temáticas inspiradas nos personagens de Alice, mais palestras, mais villages e um CTF que vai fundo. 14 de novembro, Brasília.</p><div class="history-stats"><b>4 <small>trilhas</small></b><b>16+ <small>posições</small></b><b>1 <small>CTF</small></b><b>∞ <small>comunidade</small></b></div></article>
+      </div>
+      <article class="glass-card network-card">
+        <div class="card-kicker">SOBRE A REDE BSIDES</div>
+        <h3>A rede mundial BSides</h3>
+        <p>A BSides é uma rede mundial de conferências de segurança da informação criadas pela comunidade, para a comunidade: sem corporação patrocinadora dona do evento. Cada capítulo é independente, mas compartilha o DNA do <em>“by the community, for the community”</em>. A BSidesBSB é o capítulo de Brasília.</p>
+        <p>Começou em 2009 em Las Vegas como alternativa à Black Hat / DEFCON: hoje existe em dezenas de cidades do mundo. Em Brasília, nascemos em 2025 e seguimos descendo a toca.</p>
+      </article>
+    </section>
+
+    <section id="patrocinadores" class="section sponsor-section">
+      <div class="sponsor-hero">
+        <img src="assets/crops/partnership.webp" alt="Aperto de mãos neon em cenário cyberpunk" loading="lazy">
+        <div class="sponsor-overlay"></div>
+        <div class="sponsor-copy"><div class="eyebrow">PARCERIAS</div><h2 data-glitch>Patrocine o <span>BSidesBSB 2026</span></h2><p>Coloque sua marca diante da comunidade de segurança da informação de Brasília: profissionais, pesquisadores e a próxima geração de talentos. Em 2025 reunimos 19 especialistas, 2 palcos, 3 villages e um CTF com prêmios. Em 2026 vamos mais fundo na toca do coelho: 4 trilhas paralelas, mais palestras, mais villages e mais visibilidade para a sua marca. Sua empresa pode fazer parte dessa jornada como parte ativa da comunidade, não apenas como logotipo.</p><div class="hero-actions"><a class="btn btn-primary" href="https://forms.gle/MxmhBLyhL2LkASS87" target="_blank" rel="noopener noreferrer">Quero patrocinar ↗</a><a class="btn btn-outline" href="mailto:bsidesbsb@gmail.com">Solicitar mídia kit</a></div></div>
+      </div>
+      <div class="sponsor-tiers"><article><span>PREMIUM</span><h3>White Rabbit</h3><p>Logo grande em destaque em todas as peças oficiais, booth duplo no local, 3 min no keynote, 10 vagas VIP e menção em todas as redes sociais.</p></article><article><span>GOLD</span><h3>Cheshire</h3><p>Logo em peças oficiais, booth individual no local, 5 vagas VIP e menção em redes sociais.</p></article><article><span>SILVER</span><h3>Mad Hatter</h3><p>Logo em peças oficiais, espaço para banner, 3 vagas no evento e menção em redes sociais.</p></article><article><span>THEMATIC</span><h3>Village</h3><p>Espaço dedicado para workshop temático, branding da village, 2 vagas no evento e apoio institucional.</p></article></div>
+      <div class="sponsor-walls">
+        <section class="track-row sponsor-row" style="--track-accent:#ff28dc;--track-bg:url('assets/crops/purple-smoke.png')">
+          <div class="track-info">
+            <div class="track-no">PATROCINADORES · PREMIUM &amp; GOLD</div>
+            <h3>Marcas na toca</h3>
+            <p>As empresas que apoiam a comunidade e descem a toca do coelho junto com a gente na edição 2026.</p>
+            <div class="track-desc-tag">Seu logo aqui → fale com a gente</div>
+          </div>
+          <div class="rail-area">
+            <div class="rail-head"><div class="rail-title">PREMIUM &amp; GOLD</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior">←</button><button type="button" data-dir="next" aria-label="Próximo">→</button></div></div>
+            <div class="rail" data-sponsor-set="premium" data-sponsor-count="5" data-sponsor-label="PATROCINADOR"></div>
+          </div>
+        </section>
+        <section class="track-row sponsor-row" style="--track-accent:#2dd7ff;--track-bg:url('assets/crops/light-waves.png')">
+          <div class="track-info">
+            <div class="track-no">PARCEIROS · SILVER &amp; THEMATIC</div>
+            <h3>Apoio &amp; comunidades</h3>
+            <p>Comunidades, universidades e projetos que fortalecem a cena de segurança de Brasília junto com o BSidesBSB.</p>
+            <div class="track-desc-tag">Arraste para os lados <span class="drag-arrow">→</span></div>
+          </div>
+          <div class="rail-area">
+            <div class="rail-head"><div class="rail-title">SILVER &amp; THEMATIC</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior">←</button><button type="button" data-dir="next" aria-label="Próximo">→</button></div></div>
+            <div class="rail" data-sponsor-set="parceiros" data-sponsor-count="5" data-sponsor-label="PARCEIRO"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="conduta" class="section conduta-section">
+      <div class="conduta-panel">
+        <div class="eyebrow dark">CONDUTA &amp; PRIVACIDADE</div>
+        <h2>Código de Conduta <span>e Política de Privacidade</span></h2>
+        <p class="light-intro">Juntos por um ambiente seguro, respeitoso e inclusivo: leia os documentos completos:</p>
+        <div class="policy-grid">
+          <article class="policy-card">
+            <div class="policy-top"><span>01</span><h3>Código de Conduta · BSides BSB</h3></div>
+            <p>A <strong>BSides BSB</strong> é um espaço de troca técnica, debate aberto e ceticismo saudável. Ideias podem e devem ser questionadas; pessoas não. Insultos, assédio ou qualquer forma de hostilidade são inaceitáveis. Zelamos por um ambiente seguro, inclusivo e produtivo para todas as pessoas.</p>
+            <button class="policy-open" type="button" data-modal="modal-conduta">Ler o código completo →</button>
+          </article>
+          <article class="policy-card">
+            <div class="policy-top"><span>02</span><h3>Política de Privacidade</h3></div>
+            <p>A sua privacidade é importante para nós. É política do <strong>BSidesBSB</strong> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site, durante o evento, e outros sites que possuímos e operamos.</p>
+            <button class="policy-open" type="button" data-modal="modal-privacidade">Ler a política completa →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contato">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://bsidesbsb.com/assets/logo.png" alt="BSidesBSB">
+        <p>Segurança é uma <span>jornada coletiva.</span></p>
+        <div class="social-row">
+          <a class="social-btn" href="https://www.instagram.com/bsidesbsb/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do BSidesBSB">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a class="social-btn" href="https://www.linkedin.com/company/bsides-bsb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn do BSidesBSB">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg>
+          </a>
+          <a class="social-btn" href="mailto:bsidesbsb@gmail.com" aria-label="E-mail do BSidesBSB">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <div class="eyebrow">CONTATO</div>
+        <h3 class="footer-title" data-glitch>Fale com a <span>organização</span>.</h3>
+        <p class="footer-sub">Palestras, patrocínio, imprensa ou qualquer dúvida sobre o evento.</p>
+        <div class="footer-contacts">
+          <a class="footer-contact-row" href="mailto:bsidesbsb@gmail.com">
+            <span class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></span>
+            <span class="fc-text"><small>E-MAIL</small><strong>bsidesbsb@gmail.com</strong></span>
+            <span class="fc-arrow">↗</span>
+          </a>
+          <a class="footer-contact-row" href="https://www.instagram.com/bsidesbsb/" target="_blank" rel="noopener noreferrer">
+            <span class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle></svg></span>
+            <span class="fc-text"><small>INSTAGRAM</small><strong>@bsidesbsb</strong></span>
+            <span class="fc-arrow">↗</span>
+          </a>
+          <a class="footer-contact-row" href="https://www.linkedin.com/company/bsides-bsb/" target="_blank" rel="noopener noreferrer">
+            <span class="fc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"></path></svg></span>
+            <span class="fc-text"><small>LINKEDIN</small><strong>BSidesBSB</strong></span>
+            <span class="fc-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <nav class="footer-nav" aria-label="Navegação do rodapé"><a href="#sobre">Sobre</a><a href="#palestrantes">Palestrantes</a><a href="#trilhas">Trilhas</a><a href="#experiencia">Experiência</a><a href="#agenda">Agenda</a><a href="#ctf">CTF</a><a href="#historico">Histórico</a><a href="#patrocinadores">Patrocínio</a><a href="#conduta">Conduta</a><a href="#contato">Contato</a></nav>
+    <div class="footer-bottom"><span>© 2026 BSidesBSB: feito pela comunidade, para a comunidade</span><span>Powered by 4root.com.br</span></div>
+  </footer>
+  </div>
+
+  <div class="modal" id="modal-conduta" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Código de Conduta · BSides BSB">
+      <button class="modal-close" type="button" data-close aria-label="Fechar">✕</button>
+      <div class="modal-head">
+        <div class="eyebrow dark">CONDUTA</div>
+        <h3>Código de Conduta · BSides BSB</h3>
+      </div>
+      <div class="modal-body policy-body">
+        <p>A <strong>BSides BSB</strong> é um espaço de troca técnica, debate aberto e ceticismo saudável. Ideias podem e devem ser questionadas; pessoas não. Insultos, assédio ou qualquer forma de hostilidade são inaceitáveis. Zelamos por um ambiente seguro, inclusivo e produtivo para todas as pessoas. O que conta é o que você traz em mente e como se comporta.</p>
+        <h4>Escopo</h4>
+        <p>Este Código de Conduta aplica-se a todas as atividades oficiais da BSides BSB, presenciais ou on-line, incluindo palestras, trilhas, villages, áreas de patrocinadores, eventos sociais associados e canais digitais. Abrange todas as pessoas participantes: público, palestrantes, patrocinadores, imprensa, fornecedores, voluntários e equipe organizadora.</p>
+        <h4>Comportamentos inaceitáveis</h4>
+        <p>Não toleramos assédio sob nenhuma circunstância. Assédio inclui, sem se limitar a: intimidação deliberada, perseguição ou importunação contínua; comentários ofensivos relacionados a identidade ou expressão de gênero, orientação sexual, deficiência, aparência física, peso, raça, etnia, religião, nacionalidade, idade ou status profissional; uso de linguagem, imagens ou gestos sexualizados; atenção sexual indesejada; toques sem consentimento; interrupções agressivas, gritos, ameaças, incitação à violência, doxxing ou exposição de informações pessoais; exibição de símbolos de ódio, material discriminatório ou violento; qualquer conduta que cause desconforto, constrangimento, sensação de não pertencimento ou medo.</p>
+        <ul><li>Intimidação deliberada, perseguição ou importunação contínua.</li><li>Comentários ofensivos relacionados a identidade ou expressão de gênero, orientação sexual, deficiência, aparência física, peso, raça, etnia, religião, nacionalidade, idade ou status profissional.</li><li>Linguagem, imagens ou gestos sexualizados; atenção sexual indesejada; toques sem consentimento.</li><li>Interrupções agressivas, gritos, ameaças, incitação à violência, doxxing ou exposição de informações pessoais.</li><li>Exibição de símbolos de ódio, material discriminatório ou violento.</li><li>Qualquer conduta que cause desconforto, constrangimento, sensação de não pertencimento ou medo.</li></ul>
+        <p>Pessoas que forem solicitadas a cessar comportamentos inadequados devem fazê-lo imediatamente.</p>
+        <h4>Diretrizes de convivência</h4>
+        <ul><li>Critique ideias, não pessoas. Mantenha o foco técnico e a civilidade.</li><li>Respeite os nomes e pronomes informados.</li><li>Fotografia, gravação e publicação de imagens devem respeitar o consentimento. Honre sinalizações de “sem foto/gravação” quando houver.</li><li>Consumo de álcool somente de forma responsável e conforme regras do local. Drogas ilícitas são proibidas.</li><li>Siga as políticas do espaço do evento, da cidade e as leis aplicáveis.</li></ul>
+        <h4>Medidas e aplicação</h4>
+        <ul><li>Advertência verbal ou escrita.</li><li>Mediação e ajustes de conduta.</li><li>Remoção da pessoa do local sem reembolso.</li><li>Revogação de credenciais e banimento de edições futuras.</li><li>Acionamento da segurança do local e das autoridades competentes.</li></ul>
+        <p>As decisões da organização são imediatas e vinculantes durante o evento.</p>
+        <h4>Como reportar</h4>
+        <p>Qualquer pessoa pode reportar. Se você sofrer, presenciar ou tiver preocupação com condutas inadequadas: procure um voluntário ou membro da organização identificado no local, ou dirija-se ao ponto de apoio/credenciamento. Ao reportar, descreva o ocorrido com o máximo de detalhes possível, incluindo local, horário, pessoas envolvidas e testemunhas. A organização buscará preservar confidencialidade na medida do possível e apenas compartilhará informações conforme necessário para resposta adequada e cumprimento legal.</p>
+        <h4>Apoio e segurança</h4>
+        <ul><li>Acompanhar a pessoa ao local seguro dentro do evento.</li><li>Acionar segurança do local e autoridades.</li><li>Auxiliar com transporte, contato de emergência e demais providências para que a pessoa se sinta segura.</li></ul>
+        <p class="cc-highlight"><strong>Retaliação contra quem reporta de boa-fé é proibida e constituirá violação deste Código.</strong></p>
+        <p class="cc-note">Versão baseada e ampliada a partir de códigos de conduta da comunidade BSides, adaptada para a BSides BSB.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-privacidade" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Política de Privacidade · BSidesBSB">
+      <button class="modal-close" type="button" data-close aria-label="Fechar">✕</button>
+      <div class="modal-head">
+        <div class="eyebrow dark">PRIVACIDADE</div>
+        <h3>Política de Privacidade</h3>
+      </div>
+      <div class="modal-body policy-body">
+        <p>A sua privacidade é importante para nós. É política do <strong>BSidesBSB</strong> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site, durante o evento, e outros sites que possuímos e operamos.</p>
+        <h4>Coleta e uso</h4>
+        <p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado: o compartilhamento de seu nome e email de cadastro com nossos patrocinadores. Você pode escolher não compartilhá-lo, caso deseje.</p>
+        <h4>Armazenamento</h4>
+        <p>Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p>
+        <h4>Liberdade de recusa</h4>
+        <p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p>
+        <h4>Aceitação</h4>
+        <p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais.</p>
+        <h4>Compromisso do usuário</h4>
+        <p>O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o BSidesBSB oferece no site e com caráter enunciativo, mas não limitativo:</p>
+        <ul><li>Não se envolver em atividades que sejam ilegais ou contrárias à boa fé e à ordem pública.</li><li>Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de sorte ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos.</li><li>Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) do BSidesBSB, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar os danos anteriormente mencionados.</li></ul>
+        <h4>Mais informações</h4>
+        <p>Esperamos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-speaker" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog speaker-dialog" role="dialog" aria-modal="true" aria-label="Detalhes do palestrante">
+      <button class="modal-close" type="button" data-close aria-label="Fechar">✕</button>
+      <div class="speaker-modal-grid">
+        <div class="speaker-modal-photo"><img id="speaker-modal-img" src="assets/crops/speaker-01.jpg" alt="" loading="lazy"><span class="speaker-modal-slot" id="speaker-modal-slot">01</span></div>
+        <div class="speaker-modal-info">
+          <span class="speaker-modal-tag" id="speaker-modal-track"></span>
+          <h3 id="speaker-modal-name">Nome em breve</h3>
+          <div class="speaker-modal-role" id="speaker-modal-role"></div>
+          <p id="speaker-modal-desc"></p>
+          <p class="speaker-modal-note"><strong>Lineup 2026:</strong> a escalação completa será anunciada em breve. Quer esse lugar na toca? Inscreva a sua palestra na chamada de palestras do BSidesBSB.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
