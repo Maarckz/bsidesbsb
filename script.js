@@ -1,5 +1,5 @@
 const tracks = [
-  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem a toca e guiam a comunidade pelo buraco abaixo.', images:[1,2,3,4,5] },
+  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem o evento e ficam ecoando na cabeça.', images:[1,2,3,4,5] },
   { key:'cheshire', name:'Gato de Cheshire', tag:'TRILHA 02', role:'RED TEAM / PENTEST', accent:'#ff28dc', bg:'url("assets/crops/cheshire.jpg")', fig:'assets/crops/cheshire.jpg', figPos:'center 30%', desc:'Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro.', images:[6,7,8,9,10] },
   { key:'queen', name:'Rainha de Copas', tag:'TRILHA 03', role:'BLUE TEAM / IR', accent:'#71b9ff', bg:'url("assets/crops/queen.jpg")', fig:'assets/crops/queen.jpg', figPos:'center 25%', desc:'Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos.', images:[1,3,5,7,9] },
   { key:'hatter', name:'Chapeleiro', tag:'TRILHA 04', role:'WORKSHOP / LAB', accent:'#c17aff', bg:'url("assets/crops/hatter.jpg")', fig:'assets/crops/hatter.jpg', figPos:'center 28%', desc:'Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático.', images:[2,4,6,8,10] }
@@ -339,4 +339,126 @@ if (cyberCursor) {
     schedule(tick);
   };
   schedule(tick);
+})();
+(function(){
+  const bar = document.getElementById('tbType');
+  if (!bar) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const phrases = ['Follow The Rabbit', 'Down the rabbit Hole', 'BSIDES_BSB v2026'];
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const start = async () => {
+    if (reduced) { bar.textContent = phrases[0]; return; }
+    let i = 0;
+    for (;;) {
+      for (const ch of phrases[i]) { bar.textContent += ch; await wait(34 + Math.random() * 46); }
+      await wait(1900);
+      while (bar.textContent) { bar.textContent = bar.textContent.slice(0, -1); await wait(22); }
+      await wait(420);
+      i = (i + 1) % phrases.length;
+    }
+  };
+  if (document.documentElement.classList.contains('loader-lock')) {
+    document.addEventListener('bsb:loaded', start, { once: true });
+  } else {
+    start();
+  }
+})();
+(function(){
+  const eyes = document.querySelectorAll('.eyebrow');
+  if (!eyes.length) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const prep = el => {
+    if (el.dataset.ebReady) return;
+    el.dataset.ebReady = '1';
+    const full = el.textContent.trim();
+    el.setAttribute('aria-label', full);
+    el.dataset.full = full;
+    el.innerHTML = '<span class="eb-text"></span><span class="eb-prompt">:~$</span><span class="eb-caret">_</span>';
+  };
+  const run = async el => {
+    if (el.dataset.ebDone) return;
+    el.dataset.ebDone = '1';
+    const textEl = el.querySelector('.eb-text');
+    const full = el.dataset.full || '';
+    if (reduced || !full) { textEl.textContent = full; el.classList.add('eb-done'); return; }
+    for (const ch of full) { textEl.textContent += ch; await wait(24 + Math.random() * 30); }
+    el.classList.add('eb-done');
+  };
+  if (!('IntersectionObserver' in window) || reduced) {
+    eyes.forEach(el => { prep(el); run(el); });
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      run(en.target);
+    });
+  }, { threshold: .5 });
+  eyes.forEach(el => { prep(el); io.observe(el); });
+})();
+(function(){
+  const fab = document.getElementById('fabTop');
+  const menu = document.getElementById('mobileMenu');
+  if (!fab || !menu) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cmd = document.getElementById('mmCmd');
+  const HOLD = 560;
+  let timer = null, holding = false, fired = false, typeToken = 0;
+  const vibrate = p => { if (navigator.vibrate) try { navigator.vibrate(p); } catch (_) {} };
+  const onScroll = () => fab.classList.toggle('show', window.scrollY > 460);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  const typeCmd = async () => {
+    const token = ++typeToken;
+    if (!cmd) return;
+    if (reduced) { cmd.textContent = 'ls ../secoes/'; return; }
+    cmd.textContent = '';
+    for (const ch of 'ls ../secoes/') {
+      if (token !== typeToken) return;
+      cmd.textContent += ch;
+      await new Promise(r => setTimeout(r, 42));
+    }
+  };
+  const openMenu = () => {
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    fab.classList.remove('charging');
+    document.body.style.overflow = 'hidden';
+    vibrate([12, 40, 18]);
+    typeCmd();
+    const closeBtn = menu.querySelector('.mm-close');
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
+  };
+  const closeMenu = () => {
+    if (!menu.classList.contains('open')) return;
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    typeToken++;
+  };
+  fab.addEventListener('pointerdown', () => {
+    if (menu.classList.contains('open')) return;
+    holding = true; fired = false;
+    fab.classList.add('charging');
+    vibrate(10);
+    timer = setTimeout(() => { fired = true; openMenu(); }, HOLD);
+  });
+  const release = () => {
+    if (!holding) return;
+    holding = false;
+    clearTimeout(timer);
+    fab.classList.remove('charging');
+    if (!fired) window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+  };
+  fab.addEventListener('pointerup', release);
+  fab.addEventListener('pointercancel', release);
+  fab.addEventListener('pointerleave', release);
+  fab.addEventListener('contextmenu', e => e.preventDefault());
+  fab.addEventListener('click', e => e.preventDefault());
+  menu.querySelectorAll('[data-mm-close]').forEach(el => el.addEventListener('click', closeMenu));
+  menu.querySelectorAll('.mm-nav a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  window.addEventListener('scroll', () => { if (menu.classList.contains('open')) closeMenu(); }, { passive: true });
 })();
