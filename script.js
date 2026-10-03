@@ -244,7 +244,7 @@ if (cyberCursor) {
       const c = COLORS[Math.floor(Math.random() * COLORS.length)];
       return { x: Math.random() * W, y: init ? Math.random() * H : H + 10 * dpr, r: (.6 + Math.random() * 1.7) * dpr, v: (10 + Math.random() * 24) * dpr, amp: (5 + Math.random() * 17) * dpr, f: .35 + Math.random() * 1.05, ph: Math.random() * 6.2832, a: .18 + Math.random() * .5, tw: .7 + Math.random() * 2.1, c: c };
     }
-    const NP = Math.max(26, Math.min(80, Math.round(screen.width * screen.height / 22000)));
+    const NP = Math.max(48, Math.min(150, Math.round(screen.width * screen.height / 9000)));
     for (let i = 0; i < NP; i++) pts.push(spawn(true));
     function frame(now){
       raf = requestAnimationFrame(frame);
@@ -281,99 +281,105 @@ if (cyberCursor) {
     raf = requestAnimationFrame(frame);
     window.addEventListener('resize', size, { passive: true });
     return {
-      burst(cx, cy){
+      burst(cx, cy, n){
         const x = cx * dpr, y = cy * dpr;
-        for (let i = 0; i < 20; i++){
+        const N = n || 26;
+        for (let i = 0; i < N; i++){
           const a = Math.random() * 6.2832;
           const sp = (60 + Math.random() * 150) * dpr;
           const life = .65 + Math.random() * .4;
           sparks.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, r: (1.1 + Math.random() * 1.9) * dpr, life: life, max: life, c: COLORS[Math.floor(Math.random() * COLORS.length)] });
         }
       },
+      tip(x, y){
+        const px = x * dpr, py = y * dpr;
+        const n = 1 + (Math.random() < .45 ? 1 : 0);
+        for (let i = 0; i < n; i++){
+          const a = Math.random() * 6.2832;
+          const sp = (12 + Math.random() * 62) * dpr;
+          const life = .34 + Math.random() * .46;
+          sparks.push({ x: px, y: py, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 10 * dpr, r: (.6 + Math.random() * 1.4) * dpr, life: life, max: life, c: COLORS[Math.floor(Math.random() * COLORS.length)] });
+        }
+        if (sparks.length > 460) sparks.splice(0, sparks.length - 460);
+      },
       stop(){ if (raf) cancelAnimationFrame(raf); raf = 0; }
     };
   })();
   (function(){
-    const img = loader.querySelector('.loader-logo-img');
-    if (!img || reduced) return;
-    const SRC = img.getAttribute('src') || 'assets/crops/logo.png';
+    const svg = loader.querySelector('.logo-trace');
     const stage = loader.querySelector('.loader-stage');
-    if (!stage) return;
-    let failed = false;
-    const fail = () => { failed = true; loader.classList.remove('bsb-write'); };
-    loader.classList.add('bsb-write');
-    let ready;
-    if (img.complete && img.naturalWidth) ready = Promise.resolve(true);
-    else ready = new Promise(res => {
-      img.addEventListener('load', () => res(true), { once: true });
-      img.addEventListener('error', () => res(false), { once: true });
+    if (!svg || !stage || reduced || !svg.querySelectorAll) return;
+    if (!window.Element || !Element.prototype.animate) return;
+    const seq = [];
+    svg.querySelectorAll('.lt-p').forEach(p => {
+      let L = 0;
+      try { L = p.getTotalLength(); } catch (e) { return; }
+      if (!isFinite(L) || L <= 0) return;
+      seq.push({ p: p, L: L });
     });
-    const giveUp = setTimeout(fail, 1600);
-    ready.then(ok => {
-      clearTimeout(giveUp);
-      if (hidden || failed || !ok || !(img.complete && img.naturalWidth)) return fail();
-      const wrap = document.createElement('div');
-      wrap.className = 'logo-write';
-      wrap.setAttribute('aria-hidden', 'true');
-      const N = 9;
-      const DIRS = ['ltr', 'rtl', 'ctr', 'rtl', 'ltr', 'ctr', 'ltr', 'rtl', 'ltr'];
-      const WRITE_AT = 780, STAG = 132, ease = 'cubic-bezier(.32,.64,.28,1)';
-      const strips = [];
-      for (let i = 0; i < N; i++){
-        const s = document.createElement('div');
-        s.className = 'lw-strip';
-        s.style.backgroundImage = 'url("' + SRC + '")';
-        s.innerHTML = DIRS[i] === 'ltr' ? '<span class="lw-edge l"></span>' : DIRS[i] === 'rtl' ? '<span class="lw-edge r"></span>' : '<span class="lw-edge l"></span><span class="lw-edge r"></span>';
-        wrap.appendChild(s);
-        strips.push({ el: s, dir: DIRS[i], i: i });
+    if (!seq.length) return;
+    loader.classList.add('bsb-trace');
+    const TRACE_AT = 640, STAG = 26, ease = 'cubic-bezier(.62,.04,.34,1)';
+    let maxEnd = 0;
+    seq.forEach((s, i) => {
+      const dur = Math.max(400, Math.min(980, s.L * 1.4));
+      const delay = TRACE_AT + i * STAG + (i % 3) * 30;
+      const end = delay + dur;
+      if (end > maxEnd) maxEnd = end;
+      s.dur = dur; s.delay = delay; s.rev = i % 3 === 1;
+    });
+    seq.forEach(s => {
+      s.p.style.strokeDasharray = s.L + 'px ' + s.L + 'px';
+      s.p.style.strokeDashoffset = (s.rev ? -s.L : s.L) + 'px';
+    });
+    svg.classList.add('lt-on');
+    seq.forEach(s => {
+      try {
+        s.p.animate([{ strokeDashoffset: (s.rev ? -s.L : s.L) + 'px' }, { strokeDashoffset: '0px' }], { duration: s.dur, delay: s.delay, easing: ease, fill: 'both' });
+      } catch (e) {}
+    });
+    let ctm = null, tipRaf = 0;
+    const tipT0 = performance.now();
+    const easeK = k => 1 - Math.pow(1 - k, 3);
+    const tipFrame = now => {
+      tipRaf = requestAnimationFrame(tipFrame);
+      if (hidden) { cancelAnimationFrame(tipRaf); tipRaf = 0; return; }
+      const t = now - tipT0;
+      if (t < TRACE_AT - 30) return;
+      if (t > maxEnd + 90) { cancelAnimationFrame(tipRaf); tipRaf = 0; return; }
+      if (!ctm) { try { ctm = svg.getScreenCTM(); } catch (e) { ctm = null; } }
+      if (!ctm) return;
+      for (let i = 0; i < seq.length; i++){
+        const s = seq[i];
+        const lt = t - s.delay;
+        if (lt < 0 || lt > s.dur) continue;
+        const k = easeK(Math.min(1, lt / s.dur));
+        const at = s.rev ? s.L * (1 - k) : s.L * k;
+        let pt = null;
+        try { pt = s.p.getPointAtLength(at); } catch (e) { continue; }
+        if (!pt || Math.random() > .5) continue;
+        const sx = pt.x * ctm.a + pt.y * ctm.c + ctm.e;
+        const sy = pt.x * ctm.b + pt.y * ctm.d + ctm.f;
+        dust.tip(sx, sy);
       }
-      stage.appendChild(wrap);
-      void wrap.offsetHeight;
-      const LH = wrap.clientHeight || 280;
-      const sh = LH / N;
-      let maxEnd = 0;
-      strips.forEach(o => {
-        const el = o.el;
-        el.style.top = (o.i * sh).toFixed(2) + 'px';
-        el.style.height = (sh + 1.5).toFixed(2) + 'px';
-        el.style.backgroundSize = '100% ' + LH + 'px';
-        el.style.backgroundPosition = '0px ' + (-o.i * sh).toFixed(2) + 'px';
-        const dur = 470 + ((o.i * 97) % 190);
-        const delay = WRITE_AT + o.i * STAG;
-        const end = delay + dur;
-        if (end > maxEnd) maxEnd = end;
-        let kf;
-        if (o.dir === 'ltr') kf = [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }];
-        else if (o.dir === 'rtl') kf = [{ clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0%)' }];
-        else kf = [{ clipPath: 'inset(0 50% 0 50%)' }, { clipPath: 'inset(0 0% 0 0%)' }];
-        try {
-          el.animate(kf, { duration: dur, delay: delay, easing: ease, fill: 'both' });
-          const eL = el.querySelector('.lw-edge.l'), eR = el.querySelector('.lw-edge.r');
-          if (o.dir === 'ltr' && eL) eL.animate([{ left: '0%' }, { left: '100%' }], { duration: dur, delay: delay, easing: ease, fill: 'both' });
-          if (o.dir === 'rtl' && eR) eR.animate([{ right: '0%' }, { right: '100%' }], { duration: dur, delay: delay, easing: ease, fill: 'both' });
-          if (o.dir === 'ctr'){
-            if (eL) eL.animate([{ left: '50%' }, { left: '0%' }], { duration: dur, delay: delay, easing: ease, fill: 'both' });
-            if (eR) eR.animate([{ right: '50%' }, { right: '0%' }], { duration: dur, delay: delay, easing: ease, fill: 'both' });
-          }
-          const eo = { duration: dur, delay: delay, easing: 'linear', fill: 'both' };
-          if (eL) eL.animate([{ opacity: 0 }, { opacity: 1, offset: .07 }, { opacity: .95, offset: .8 }, { opacity: 0 }], eo);
-          if (eR) eR.animate([{ opacity: 0 }, { opacity: 1, offset: .07 }, { opacity: .95, offset: .8 }, { opacity: 0 }], eo);
-        } catch (e) {}
-      });
-      setTimeout(() => {
-        if (hidden) return;
-        wrap.classList.add('lw-done');
-        const shock = loader.querySelector('.loader-shock');
-        if (shock){
-          shock.style.animation = 'none';
-          void shock.offsetHeight;
-          shock.style.animation = 'loader-shock 1s cubic-bezier(.2,.7,.3,1) .04s both';
-        }
-        const r = stage.getBoundingClientRect();
-        dust.burst(r.left + r.width / 2, r.top + r.height * .48);
-      }, maxEnd + 40);
-    });
+    };
+    tipRaf = requestAnimationFrame(tipFrame);
+    setTimeout(() => {
+      if (hidden) return;
+      svg.classList.add('lt-glow');
+      loader.classList.add('lt-img-in');
+      const shock = loader.querySelector('.loader-shock');
+      if (shock){
+        shock.style.animation = 'none';
+        void shock.offsetHeight;
+        shock.style.animation = 'loader-shock 1s cubic-bezier(.2,.7,.3,1) .04s both';
+      }
+      const r = stage.getBoundingClientRect();
+      dust.burst(r.left + r.width / 2, r.top + r.height * .48, 44);
+      setTimeout(() => svg.classList.add('lt-fade'), 640);
+    }, maxEnd + 40);
   })();
+
   const hide = () => {
     if (hidden) return;
     hidden = true;
@@ -616,7 +622,7 @@ if (cyberCursor) {
     return src.replace(/\n/g, '<br>');
   }
   const WELCOME = "Olá! Eu sou o **White Rabbit Bot**, o coelho-guia do site. Pergunte sobre o **BSidesBSB 2026**: data, local, trilhas, CTF, inscrição, palestrantes, patrocínio ou contato.";
-  const CHIPS = ["Quando é o evento?", "Quais são as trilhas?", "Como funciona o CTF?", "Como me inscrevo?"];
+  const CHIPS = ["Quando é o evento?", "Quais são as trilhas?", "Como funciona o CTF?", "É para iniciantes?", "Quero palestrar", "Quanto custa?", "Onde acontece?", "O que é a BSides?"];
   const A_INSC = "As inscrições para 2026 **abrem em breve** e as vagas são limitadas. Acompanhe o [Instagram](https://www.instagram.com/bsidesbsb/) e as redes oficiais para garantir a sua.";
   const A_SPONSOR = "Sua marca em Wonderland em 4 níveis: **White Rabbit** (premium), **Cheshire** (gold), **Mad Hatter** (silver) e **Village** (temático). Preencha o [formulário de parcerias](https://forms.gle/MxmhBLyhL2LkASS87) ou escreva para [bsidesbsb@gmail.com](mailto:bsidesbsb@gmail.com) e peça o mídia kit.";
   const A_CTF = "O **CTF oficial** rola durante o evento, com desafios de **web, pwn, crypto, forense, OSINT e misc** — para todos os níveis, do iniciante ao avançado. Inscrição na hora, individual ou em equipe, e **prêmios para o top 3**.";
@@ -631,32 +637,61 @@ if (cyberCursor) {
   const A_CONTACT = "Os canais da organização:\n- **E-mail** — [bsidesbsb@gmail.com](mailto:bsidesbsb@gmail.com)\n- **Instagram** — [@bsidesbsb](https://www.instagram.com/bsidesbsb/)\n- **LinkedIn** — [BSidesBSB](https://www.linkedin.com/company/bsides-bsb/)";
   const A_BSIDES = "A **BSides** é uma rede mundial de conferências de segurança **feitas pela comunidade, para a comunidade**, nascida em 2009 em Las Vegas como alternativa à Black Hat / DEF CON. Cada capítulo é independente — a **BSidesBSB** é o capítulo de Brasília.";
   const A_BOT = "Sou o **White Rabbit Bot**, o coelho-guia do site. Não sou uma IA de verdade — só conheço o **BSidesBSB 2026**: data, local, trilhas, CTF, inscrição, palestrantes, patrocínio, conduta e contato.";
-  const A_HELP = "Posso falar do **BSidesBSB 2026**: **data e local**, **trilhas**, **CTF**, **inscrição**, **palestrantes**, **patrocínio**, **villages**, **agenda**, **conduta**, **histórico** e **contato**. É só perguntar ou tocar numa das sugestões.";
+  const A_HELP = "Posso falar do **BSidesBSB 2026**: **data, horários e local**, **trilhas**, **CTF** (prêmios e equipes), **inscrição e valores**, **palestrantes**, **chamada de palestras**, **lightning talks**, **patrocínio**, **villages**, **iniciantes**, **voluntariado**, **conduta e privacidade**, **histórico**, **hospedagem**, **transmissão**, **tema da edição** e **contato**. É só perguntar ou tocar numa das sugestões.";
   const A_HI = "Oi! Bem-vindo à Wonderland. Quer saber da **data**, das **trilhas**, do **CTF** ou da **inscrição**?";
   const A_HOW = "Tudo certo aqui do outro lado do espelho! Enquanto isso posso falar do evento: **data**, **trilhas**, **CTF**, **inscrição**…";
   const A_THX = "Por nada! Nos vemos em Wonderland — **14 de novembro**, Brasília.";
   const A_JOKE = "Clássica da área: existem **10 tipos de pessoas** — as que entendem binário… e as que não entendem. A Rainha de Copas manda decapitar só a segunda metade.";
   const A_FALL = "Essa me deixou tão perdido quanto coelho sem relógio. Só sei falar do **BSidesBSB 2026**: **data**, **local**, **trilhas**, **CTF**, **inscrição**, **palestrantes**, **patrocínio** e **contato**. Tenta uma das sugestões acima!";
+  const A_PRICE = "Os **valores** ainda **não foram anunciados** — os detalhes de ingresso chegam junto com a abertura das inscrições. A BSides é uma conferência comunitária, historicamente com ingresso acessível para estudantes e profissionais. Acompanhe o [Instagram](https://www.instagram.com/bsidesbsb/).";
+  const A_PRIZE = "O **CTF** tem **placar ao vivo** e **prêmios para o top 3** do pódio. Desafios de **web, pwn, crypto, forense, OSINT e misc** — do iniciante ao avançado.";
+  const A_TEAM = "No **CTF** você compete **individual ou em equipe** — inscrição na hora, sem burocracia. Monte o squad, escolha um nome bonito e caçe flags: o placar roda ao vivo e o **top 3** leva prêmios.";
+  const A_CFP = "A **chamada de palestras 2026** está aberta! São **4 trilhas** e **16+ posições** entre talks, keynotes e workshops — de red team a DFIR, de OSINT a hardware. Submeta a sua proposta no [formulário oficial](https://forms.gle/KVSwddLpnSnXQfta9) — o mesmo botão **Quero palestrar** da seção Palestrantes.";
+  const A_LIGHT = "**Lightning talks** são palestras relâmpago entre os blocos da grade: ideias diretas, demos ao vivo e projetos da comunidade em poucos minutos. Quer uma? Inscreva na [chamada de palestras](https://forms.gle/KVSwddLpnSnXQfta9) e marque que é lightning.";
+  const A_BEGIN = "Sim — o BSides é **feito pela comunidade, para a comunidade**: tem lugar para estudante, iniciante, estagiário e veterano. O **CTF vai do iniciante ao avançado**, as **villages** são espaço aberto para perguntar e trocar ideia, e o Código de Conduta garante respeito. Aqui o que vale é curiosidade — ninguém precisa ser especialista pra pertencer.";
+  const A_VOLUNTEER = "O evento é **organizado pela comunidade** — e sempre cabe mais gente ajudando na produção, no CTF e no conteúdo. Escreva para [bsidesbsb@gmail.com](mailto:bsidesbsb@gmail.com) ou chame no [Instagram](https://www.instagram.com/bsidesbsb/) e diga como quer contribuir.";
+  const A_PRIVACY = "O site tem o **Código de Conduta** e a **Política de Privacidade** completos na seção **Conduta & Privacidade** (menu e rodapé). Resumo do espírito: ideias podem e devem ser questionadas; pessoas, nunca. Assédio ou hostilidade são inaceitáveis.";
+  const A_HOTEL = "Brasília tem hospedagem para todos os bolsos — Setor Hoteleiro, Asa Sul e arredores. Quando o **local exato** do evento for anunciado, publicaremos junto **mapa, acesso e dicas de hospedagem**. Fique de olho no [Instagram](https://www.instagram.com/bsidesbsb/).";
+  const A_STREAM = "A **transmissão online** ainda **não está confirmada** para 2026 — se rolar, o anúncio sai primeiro no [Instagram](https://www.instagram.com/bsidesbsb/). Mas o pulo do gato é presencial: CTF, villages e networking não têm substituto.";
+  const A_BRING = "Traga **notebook carregado** se quiser caçar flags no **CTF** e testar os labs ao vivo — e sede de aprender, claro. Os detalhes de credenciamento chegam junto com a grade; os coelhos avisam nas redes.";
+  const A_THEME = "**Down the Rabbit Hole** — 'desça pelo buraco do coelho' — é o convite da edição 2026: mergulhar de cabeça na segurança da informação, fundo, sem medo do desconhecido. Por isso as **4 trilhas** homenageiam personagens de **Alice no País das Maravilhas**: Coelho Branco, Gato de Cheshire, Rainha de Copas e Chapeleiro.";
+  const A_SCHED = "Será **um dia inteiro de imersão**: talks nas 4 trilhas, CTF rolando, villages e labs. Os **horários exatos** (abertura, blocos e encerramento) chegam com a **grade completa** — em breve nas redes oficiais.";
+  const A_2026 = "Em 2026 o país das maravilhas cresce: **4 trilhas paralelas** inspiradas em Alice, **16+ posições** na lineup, **mais villages**, labs ao vivo e um **CTF que vai fundo**. Um dia inteiro, em **14 de novembro**, em Brasília.";
+  const A_WHY = "Porque o BSidesBSB é o ponto de encontro da cena de segurança de Brasília: **conteúdo técnico de profundidade**, **networking real** e **sem barreira entre palco e plateia** — estagiário, blue team, red team, estudante e CISO no mesmo evento. É seguir o coelho branco e descer junto.";
   const RULES = [
-    [/(inscr|ingresso|vaga|comprar|pagar|preco|valor|custa|gratuit|gratis)/, A_INSC],
+    [/(quanto custa|preco|valor|custa|pagamento|meia entrada)/, A_PRICE],
+    [/(inscr|ingresso|vaga|comprar|pagar|gratuit|gratis)/, A_INSC],
     [/(patroc|sponsor|marca|empresa|cotar|cota |midia|imprensa)/, A_SPONSOR],
-    [/(ctf|capture the flag|flag|pwn|exploit)/, A_CTF],
+    [/(ctf|capture the flag|flag|pwn|exploit|placar)/, A_CTF],
+    [/(premio|premiacao|vencer|ganhar|top 3|podio)/, A_PRIZE],
+    [/(equipe|time|squad|dupla|trio)/, A_TEAM],
     [/(trilha|track|coelho branco|cheshire|rainha de copas|chapeleiro|keynote)/, A_TRACKS],
-    [/(palestr|lineup|speaker|chamada de palestras|talk)/, A_SPEAK],
+    [/(lightning|relampago|talk curta|palestra curta)/, A_LIGHT],
+    [/(palestrar|submeter|proposta|call for|cfp|chamada de palestras)/, A_CFP],
+    [/(palestr|lineup|speaker|talk)/, A_SPEAK],
+    [/(horario|que horas|comeca|termina|abertura|encerramento|duracao|quanto tempo)/, A_SCHED],
     [/(data|quando|dia do evento|novembro)/, A_DATE],
-    [/(local|onde|endereco|cidade|brasilia|chegar|mapa|hospedagem|hotel)/, A_LOCAL],
+    [/(hospedagem|hotel|onde ficar|dormir|airbnb|pousada)/, A_HOTEL],
+    [/(conduta|privacidade|lgpd|dados pessoais|assedio|respeito|codigo de conduta)/, A_CONDUTA],
+    [/(local|onde|endereco|cidade|brasilia|chegar|mapa)/, A_LOCAL],
     [/(agenda|programac|grade|cronograma|schedule)/, A_AGENDA],
     [/(village|lab|workshop|hands ?on)/, A_VILLAGE],
-    [/(conduta|privacidade|assedio|respeito|codigo de conduta)/, A_CONDUTA],
+    [/(iniciante|leigo|comecando|do zero|nunca estudei|estudante|universidade|faculdade|calouro|carreira|minha primeira)/, A_BEGIN],
+    [/(voluntar|fazer parte da organizacao|equipe da organizacao|producao do evento)/, A_VOLUNTEER],
+    [/(levar|levo|mochila|notebook|credenciamento|check ?in)/, A_BRING],
+    [/(transmissao|streaming|online|gravacao|youtube|twitch|assistir de casa)/, A_STREAM],
     [/(histor|2025|edicao passada|primeira edi)/, A_HIST],
+    [/(novidade|o que esperar|o que muda|expectativa|vai ter|tera|teremos)/, A_2026],
+    [/(por que ir|porque ir|vale a pena|por que participar|motivos)/, A_WHY],
+    [/(tema|down the|rabbit hole|significado|por que alice)/, A_THEME],
     [/(contato|contact|email|e mail|instagram|linkedin|redes|whatsapp|telegram|discord|falar com)/, A_CONTACT],
-    [/(bsides|wonderland|alice|pais das maravilhas|comunidade|evento)/, A_BSIDES],
     [/(quem e voce|voce e um|voce e o|voce e real|e um bot|e robo|chatbot|seu nome|como se chama|white rabbit bot|quem e o bot)/, A_BOT],
     [/(ajuda|help|o que voce (faz|pode|sabe)|opcoes|comandos|menu)/, A_HELP],
     [/(piada|engracad|zoeira|humor)/, A_JOKE],
     [/(tudo bem|tudo bom|como vai|beleza|de boa|como voce esta|como ta)/, A_HOW],
     [/(obrigad|valeu|vlw|brigad|thanks|thank you|grato)/, A_THX],
-    [/(^|\s)(oi|ola|opa|hey|hello|hi|salve|eai|e ai|bom dia|boa tarde|boa noite|fala)(\s|$)/, A_HI]
+    [/(^|\s)(oi|ola|opa|hey|hello|hi|salve|eai|e ai|bom dia|boa tarde|boa noite|fala)(\s|$)/, A_HI],
+    [/(bsides|wonderland|alice|pais das maravilhas|comunidade|evento)/, A_BSIDES]
   ];
   function answer(q){
     const t = norm(q);
@@ -1055,4 +1090,7 @@ if (cyberCursor) {
     }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+(function(){
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
 })();
