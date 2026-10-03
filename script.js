@@ -29,7 +29,7 @@ function trackMarkup(track){
       <div class="track-desc-tag">Arraste para os lados <span class="drag-arrow">→</span></div>
     </div>
     <div class="rail-area">
-      <div class="rail-head"><div class="rail-title">${track.role}</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior">←</button><button type="button" data-dir="next" aria-label="Próximo">→</button></div></div>
+      <div class="rail-head"><div class="rail-title">${track.role}</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></button><button type="button" data-dir="next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
       <div class="rail" data-track="${track.key}">${core}${core}${core}</div>
     </div>
   </section>`;
