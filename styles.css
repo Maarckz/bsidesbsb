@@ -386,11 +386,11 @@ html.js-cine.cine-done .hero-label-left .ch{opacity:1;transform:none;filter:none
 @keyframes ch-in{to{opacity:1;transform:none;filter:none}}
 .hero-meta.reveal{transform:translateY(30px) perspective(700px) rotateX(-26deg);transform-origin:50% 100%}
 .hero-meta.reveal.visible{transform:none}
-.hero-meta{position:relative;border-radius:14px;padding-right:84px}
+.hero-meta{position:relative;border-radius:14px;padding-right:15px}
 .hero-meta:before{content:"";position:absolute;top:7px;bottom:7px;right:72px;width:1px}
 .hero-meta:after{content:"VERSION · 2026";position:absolute;top:-11px;right:14px;padding:3px 10px;border-radius:99px;background:linear-gradient(90deg,var(--pink),#8f36ff);color:#fff;font-size:.5rem;font-weight:800;letter-spacing:.2em;box-shadow:0 6px 16px rgba(255,25,220,.35);transform:rotate(2.5deg)}
 .hero-meta:hover{transform:translateY(-4px) rotate(-.6deg)}
-@media (max-width:620px){.hero-meta{padding-right:84px}}
+@media (max-width:620px){.hero-meta{padding-right:15px}}
 @media (prefers-reduced-motion:reduce){
 .cine-iris,.cine-bar,.cine-sweep{display:none!important}
 html.js-cine .hero-label-left .ch,html.js-cine.cine-open .hero-label-left .ch,html.js-cine.cine-done .hero-label-left .ch{opacity:1;transform:none;filter:none;animation:none}
