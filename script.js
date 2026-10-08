@@ -1,21 +1,28 @@
 const tracks = [
-  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem o evento e ficam ecoando na cabeça.', images:[1,2,3,4,5] },
-  { key:'cheshire', name:'Gato de Cheshire', tag:'TRILHA 02', role:'RED TEAM / PENTEST', accent:'#ff28dc', bg:'url("assets/crops/cheshire.jpg")', fig:'assets/crops/cheshire.jpg', figPos:'center 30%', desc:'Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro.', images:[6,7,8,9,10] },
-  { key:'queen', name:'Rainha de Copas', tag:'TRILHA 03', role:'BLUE TEAM / IR', accent:'#71b9ff', bg:'url("assets/crops/queen.jpg")', fig:'assets/crops/queen.jpg', figPos:'center 25%', desc:'Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos.', images:[1,3,5,7,9] },
-  { key:'hatter', name:'Chapeleiro', tag:'TRILHA 04', role:'WORKSHOP / LAB', accent:'#c17aff', bg:'url("assets/crops/hatter.jpg")', fig:'assets/crops/hatter.jpg', figPos:'center 28%', desc:'Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático.', images:[2,4,6,8,10] }
+  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem o evento e ficam ecoando na cabeça.', images:[1,2,3,4,5], featured:{ name:'Wolmer Andrade Godoi', talk:'Patchmageddon — O que a IA fez com a segurança de software e por que não estamos prontos para o resultado' } },
+  { key:'cheshire', name:'Gato de Cheshire', tag:'TRILHA 02', role:'RED TEAM / PENTEST', accent:'#ff28dc', bg:'url("assets/crops/cheshire.jpg")', fig:'assets/crops/cheshire.jpg', figPos:'center 30%', desc:'Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro.', images:[6,7,8,9,10], featured:{ name:'Ygor da Rocha (DMR)', talk:'Evasão de Antivirus e Antimalware' } },
+  { key:'queen', name:'Rainha de Copas', tag:'TRILHA 03', role:'BLUE TEAM / IR', accent:'#71b9ff', bg:'url("assets/crops/queen.jpg")', fig:'assets/crops/queen.jpg', figPos:'center 25%', desc:'Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos.', images:[1,3,5,7,9], featured:{ name:'Alexandre Silva (Alexos)', talk:'LeakOps: Automação e caça a vazamentos com o Data Leak Hunter v2' } },
+  { key:'hatter', name:'Chapeleiro', tag:'TRILHA 04', role:'WORKSHOP / LAB', accent:'#c17aff', bg:'url("assets/crops/hatter.jpg")', fig:'assets/crops/hatter.jpg', figPos:'center 28%', desc:'Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático.', images:[2,4,6,8,10], featured:{ name:'Allan Kardec', talk:'Excalidraw: Do whiteboard ao acesso inicial' } }
 ];
 const photoFor = n => `assets/crops/speaker-${String(n).padStart(2,'0')}.jpg`;
 const tracksEl = document.getElementById('tracks');
 function makeCard(track, n, copyIndex){
   const slot = String(copyIndex).padStart(2,'0');
   const photo = photoFor(n);
-  return `<article class="speaker-card" style="--track-accent:${track.accent}" tabindex="0" role="button" aria-label="Posição ${slot} da trilha ${track.name}: ver detalhes" data-photo="${photo}" data-slot="${slot}" data-track-name="${track.name}" data-track-tag="${track.tag}" data-role="${track.role}" data-desc="${track.desc}">
+  const featured = (copyIndex === 1 && track.featured) ? track.featured : null;
+  const speakerName = featured ? featured.name : 'Nome em breve';
+  const talk = featured ? featured.talk : '';
+  const roleShown = featured ? talk : track.role;
+  const chip = featured ? 'confirmado' : 'em breve';
+  const talkAttr = talk ? ` data-talk="${talk.replace(/"/g,'&quot;')}"` : '';
+  const nameAttr = featured ? ` data-speaker-name="${speakerName.replace(/"/g,'&quot;')}"` : '';
+  return `<article class="speaker-card" style="--track-accent:${track.accent}" tabindex="0" role="button" aria-label="Posição ${slot} da trilha ${track.name}: ver detalhes" data-photo="${photo}" data-slot="${slot}" data-track-name="${track.name}" data-track-tag="${track.tag}" data-role="${track.role}" data-desc="${track.desc}"${talkAttr}${nameAttr}>
     <div class="speaker-photo"><img src="${photo}" alt="Foto de palestrante · ${track.name}, posição ${copyIndex}" loading="lazy"></div>
     <div class="speaker-body">
       <div class="slot">posição ${slot}</div>
-      <div class="speaker-name">Nome em breve</div>
-      <div class="speaker-role">${track.role}</div>
-      <span class="speaker-chip">em breve</span>
+      <div class="speaker-name">${speakerName}</div>
+      <div class="speaker-role">${roleShown}</div>
+      <span class="speaker-chip">${chip}</span>
     </div>
   </article>`;
 }
@@ -34,16 +41,36 @@ function trackMarkup(track){
   </section>`;
 }
 tracksEl.innerHTML = tracks.map(trackMarkup).join('');
+const sponsorsData = {
+  premium: [
+    { name:'NGSX', photo:'assets/crops/nebula-bg.webp' },
+    { name:'Hakai Security', photo:'assets/crops/light-waves.png' },
+    { name:'BugHunt', photo:'assets/crops/purple-smoke.png' }
+  ],
+  parceiros: [
+    { name:'Hacking na Web Day', photo:'assets/crops/city-skyline.jpg' },
+    { name:'Dunasec', photo:'assets/crops/mushroom-forest.jpg' },
+    { name:'Fortalsec', photo:'assets/crops/portal.jpg' },
+    { name:"Hack'a Valley", photo:'assets/crops/neon-door.jpg' },
+    { name:'BxSec', photo:'assets/crops/clock.jpg' },
+    { name:'XibeSec', photo:'assets/crops/falling-tunnel.jpg' },
+    { name:'Latam Airlines', photo:'assets/crops/light-frame.png' }
+  ]
+};
 document.querySelectorAll('.rail[data-sponsor-set]').forEach(rail => {
   const set = rail.dataset.sponsorSet;
   const count = parseInt(rail.dataset.sponsorCount || '5', 10);
   const label = rail.dataset.sponsorLabel || 'PATROCINADOR';
   const accent = set === 'premium' ? '#ff28dc' : '#2dd7ff';
+  const list = sponsorsData[set] || [];
   const cards = Array.from({length: count}, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
+    const sp = list[i] || { name:'Espaço disponível', photo:'' };
+    const bgStyle = sp.photo ? ` style="background-image:url('${sp.photo}')"` : '';
+    const logoSrc = `assets/sponsors/${set}-${num}.png`;
     return `<article class="logo-card" style="--track-accent:${accent}">
-      <div class="logo-photo"><span class="logo-placeholder">SEU LOGO AQUI</span><img src="assets/sponsors/${set}-${num}.png" alt="Logo do patrocinador: espaço ${num}" loading="lazy" onerror="this.classList.add('image-error')"></div>
-      <div class="logo-body"><span class="slot">${label} ${num}</span><div class="logo-name">Espaço disponível</div></div>
+      <div class="logo-photo"${bgStyle}><span class="logo-placeholder">${sp.name}</span><img src="${logoSrc}" alt="Logo ${sp.name}" loading="lazy" onerror="this.classList.add('image-error')"></div>
+      <div class="logo-body"><span class="slot">${label} ${num}</span><div class="logo-name">${sp.name}</div></div>
     </article>`;
   }).join('');
   rail.innerHTML = cards + cards + cards;
@@ -109,7 +136,10 @@ const closeModal = m => {
   m.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 };
-document.querySelectorAll('.policy-open').forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.modal)));
+document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', (e) => {
+  e.preventDefault();
+  openModal(el.dataset.modal);
+}));
 document.querySelectorAll('.modal').forEach(m => {
   m.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => closeModal(m)));
 });
@@ -123,14 +153,18 @@ document.addEventListener('keydown', e => {
   const img = modal.querySelector('#speaker-modal-img');
   const tagEl = modal.querySelector('#speaker-modal-track');
   const roleEl = modal.querySelector('#speaker-modal-role');
+  const talkEl = modal.querySelector('#speaker-modal-talk');
   const descEl = modal.querySelector('#speaker-modal-desc');
   const slotEl = modal.querySelector('#speaker-modal-slot');
+  const nameEl = modal.querySelector('#speaker-modal-name');
   const open = card => {
     const accent = (card.style.getPropertyValue('--track-accent') || '#11d1ff').trim();
     dialog.style.setProperty('--spk-accent', accent);
     img.src = card.dataset.photo;
     img.alt = 'Foto do palestrante da posição ' + card.dataset.slot + ', trilha ' + card.dataset.trackName;
     tagEl.textContent = card.dataset.trackTag + ' · ' + card.dataset.trackName.toUpperCase();
+    if (nameEl) nameEl.textContent = card.dataset.speakerName || 'Nome em breve';
+    if (talkEl) talkEl.textContent = card.dataset.talk || '';
     roleEl.textContent = card.dataset.role;
     descEl.textContent = card.dataset.desc;
     if (slotEl) slotEl.textContent = card.dataset.slot;
@@ -623,14 +657,14 @@ if (cyberCursor) {
   }
   const WELCOME = "Olá! Eu sou o **White Rabbit Bot**, o coelho-guia do site. Pergunte sobre o **BSidesBSB 2026**: data, local, trilhas, CTF, inscrição, palestrantes, patrocínio ou contato.";
   const CHIPS = ["Quando é o evento?", "Quais são as trilhas?", "Como funciona o CTF?", "É para iniciantes?", "Quero palestrar", "Quanto custa?", "Onde acontece?", "O que é a BSides?"];
-  const A_INSC = "As inscrições para 2026 **abrem em breve** e as vagas são limitadas. Acompanhe o [Instagram](https://www.instagram.com/bsidesbsb/) e as redes oficiais para garantir a sua.";
+  const A_INSC = "Os **ingressos** para o BSidesBSB 2026 já estão disponíveis no **Sympla** — [garanta seu acesso](https://www.sympla.com.br/evento/security-bsides-brasilia-bsidesbsb-2026/3572551) antes que as vagas acabem. Botão **Adquira seu acesso** no topo do site.";
   const A_SPONSOR = "Sua marca em Wonderland em 4 níveis: **White Rabbit** (premium), **Cheshire** (gold), **Mad Hatter** (silver) e **Village** (temático). Preencha o [formulário de parcerias](https://forms.gle/MxmhBLyhL2LkASS87) ou escreva para [bsidesbsb@gmail.com](mailto:bsidesbsb@gmail.com) e peça o mídia kit.";
   const A_CTF = "O **CTF oficial** rola durante o evento, com desafios de **web, pwn, crypto, forense, OSINT e misc** — para todos os níveis, do iniciante ao avançado. Inscrição na hora, individual ou em equipe, e **prêmios para o top 3**.";
   const A_TRACKS = "São **4 trilhas temáticas** inspiradas nos personagens de Alice:\n- **Coelho Branco** — keynotes e talks principais\n- **Gato de Cheshire** — segurança ofensiva (red team / pentest)\n- **Rainha de Copas** — defesa e resposta (blue team / DFIR)\n- **Chapeleiro** — workshops e hands-on\nCada trilha tem 5 posições na lineup.";
-  const A_SPEAK = "A **lineup 2026** será anunciada em breve: 4 trilhas, 16+ palestras, keynotes, workshops e lightning talks. Quer uma das posições? Inscreva a sua palestra na chamada de palestras — botão **Quero palestrar** na seção Palestrantes.";
+  const A_SPEAK = "Já temos palestrantes confirmados! **Wolmer Andrade Godoi** (Patchmageddon), **Ygor da Rocha (DMR)** (Evasão de Antivirus e Antimalware), **Alexandre Silva (Alexos)** (LeakOps) e **Allan Kardec** (Excalidraw). Os demais espaços serão preenchidos em breve — a chamada de palestras segue aberta, botão **Chamada de palestras** na seção Palestrantes.";
   const A_DATE = "O **BSidesBSB 2026 — Down the Rabbit Hole** acontece em **14 de novembro de 2026**, em **Brasília**. Um dia inteiro de talks, CTF, villages e comunidade hacker.";
-  const A_LOCAL = "O evento rola em **Brasília**. O endereço exato será revelado em breve — fique de olho no [Instagram](https://www.instagram.com/bsidesbsb/) para não perder o anúncio.";
-  const A_AGENDA = "A **grade completa** será divulgada em breve. No dia do evento: talks em 4 trilhas paralelas, CTF, villages temáticas, labs ao vivo e painel da comunidade.";
+  const A_LOCAL = "O evento rola em **Brasília**. O endereço exato será revelado em breve — passe o mouse sobre o mapa na seção LOCAL para ver o mapa interativo, ou acompanhe o [Instagram](https://www.instagram.com/bsidesbsb/) para não perder o anúncio.";
+  const A_AGENDA = "A **agenda completa** está disponível no site: clique em **VER A AGENDA** na seção Mapa da jornada para abrir o cronograma, com palestras em 4 palcos, CTF o dia inteiro e encerramento com premiação. Filtre por palco para focar no que te interessa.";
   const A_VILLAGE = "Além dos palcos, teremos **villages temáticas e labs ao vivo**: espaço para experimentar, errar, aprender e trocar ideia com a comunidade — do iniciante ao veterano.";
   const A_CONDUTA = "Seguimos um **Código de Conduta**: ideias podem e devem ser questionadas; pessoas não. Assédio ou hostilidade são inaceitáveis. O código completo está na seção **Conduta & Privacidade** do site.";
   const A_HIST = "Em **2025**, a primeira edição provou que Brasília tem cena: **19 palestrantes**, **2 palcos**, **3 villages** e o **primeiro CTF oficial** da BSidesBSB. Em 2026, o país das maravilhas cresce.";
@@ -643,10 +677,10 @@ if (cyberCursor) {
   const A_THX = "Por nada! Nos vemos em Wonderland — **14 de novembro**, Brasília.";
   const A_JOKE = "Clássica da área: existem **10 tipos de pessoas** — as que entendem binário… e as que não entendem. A Rainha de Copas manda decapitar só a segunda metade.";
   const A_FALL = "Essa me deixou tão perdido quanto coelho sem relógio. Só sei falar do **BSidesBSB 2026**: **data**, **local**, **trilhas**, **CTF**, **inscrição**, **palestrantes**, **patrocínio** e **contato**. Tenta uma das sugestões acima!";
-  const A_PRICE = "Os **valores** ainda **não foram anunciados** — os detalhes de ingresso chegam junto com a abertura das inscrições. A BSides é uma conferência comunitária, historicamente com ingresso acessível para estudantes e profissionais. Acompanhe o [Instagram](https://www.instagram.com/bsidesbsb/).";
+  const A_PRICE = "Os **ingressos** já estão à venda no [Sympla](https://www.sympla.com.br/evento/security-bsides-brasilia-bsidesbsb-2026/3572551). A BSides é uma conferência comunitária, historicamente com ingresso acessível para estudantes e profissionais — confira os valores direto no link.";
   const A_PRIZE = "O **CTF** tem **placar ao vivo** e **prêmios para o top 3** do pódio. Desafios de **web, pwn, crypto, forense, OSINT e misc** — do iniciante ao avançado.";
   const A_TEAM = "No **CTF** você compete **individual ou em equipe** — inscrição na hora, sem burocracia. Monte o squad, escolha um nome bonito e caçe flags: o placar roda ao vivo e o **top 3** leva prêmios.";
-  const A_CFP = "A **chamada de palestras 2026** está aberta! São **4 trilhas** e **16+ posições** entre talks, keynotes e workshops — de red team a DFIR, de OSINT a hardware. Submeta a sua proposta no [formulário oficial](https://forms.gle/KVSwddLpnSnXQfta9) — o mesmo botão **Quero palestrar** da seção Palestrantes.";
+  const A_CFP = "A **chamada de palestras 2026** está aberta! São **4 trilhas** e **16+ posições** entre talks, keynotes e workshops — de red team a DFIR, de OSINT a hardware. Submeta a sua proposta no [formulário oficial](https://forms.gle/KVSwddLpnSnXQfta9) — botão **Chamada de palestras** no canto do título 'Escolha a sua porta', na seção Palestrantes.";
   const A_LIGHT = "**Lightning talks** são palestras relâmpago entre os blocos da grade: ideias diretas, demos ao vivo e projetos da comunidade em poucos minutos. Quer uma? Inscreva na [chamada de palestras](https://forms.gle/KVSwddLpnSnXQfta9) e marque que é lightning.";
   const A_BEGIN = "Sim — o BSides é **feito pela comunidade, para a comunidade**: tem lugar para estudante, iniciante, estagiário e veterano. O **CTF vai do iniciante ao avançado**, as **villages** são espaço aberto para perguntar e trocar ideia, e o Código de Conduta garante respeito. Aqui o que vale é curiosidade — ninguém precisa ser especialista pra pertencer.";
   const A_VOLUNTEER = "O evento é **organizado pela comunidade** — e sempre cabe mais gente ajudando na produção, no CTF e no conteúdo. Escreva para [bsidesbsb@gmail.com](mailto:bsidesbsb@gmail.com) ou chame no [Instagram](https://www.instagram.com/bsidesbsb/) e diga como quer contribuir.";
@@ -655,7 +689,7 @@ if (cyberCursor) {
   const A_STREAM = "A **transmissão online** ainda **não está confirmada** para 2026 — se rolar, o anúncio sai primeiro no [Instagram](https://www.instagram.com/bsidesbsb/). Mas o pulo do gato é presencial: CTF, villages e networking não têm substituto.";
   const A_BRING = "Traga **notebook carregado** se quiser caçar flags no **CTF** e testar os labs ao vivo — e sede de aprender, claro. Os detalhes de credenciamento chegam junto com a grade; os coelhos avisam nas redes.";
   const A_THEME = "**Down the Rabbit Hole** — 'desça pelo buraco do coelho' — é o convite da edição 2026: mergulhar de cabeça na segurança da informação, fundo, sem medo do desconhecido. Por isso as **4 trilhas** homenageiam personagens de **Alice no País das Maravilhas**: Coelho Branco, Gato de Cheshire, Rainha de Copas e Chapeleiro.";
-  const A_SCHED = "Será **um dia inteiro de imersão**: talks nas 4 trilhas, CTF rolando, villages e labs. Os **horários exatos** (abertura, blocos e encerramento) chegam com a **grade completa** — em breve nas redes oficiais.";
+  const A_SCHED = "Será **um dia inteiro de imersão**: talks nas 4 trilhas, CTF rolando, villages e labs. Os **horários completos** (abertura, blocos, almoço e encerramento) estão na agenda do site — clique em **VER A AGENDA** na seção Mapa da jornada para abrir o cronograma por palco.";
   const A_2026 = "Em 2026 o país das maravilhas cresce: **4 trilhas paralelas** inspiradas em Alice, **16+ posições** na lineup, **mais villages**, labs ao vivo e um **CTF que vai fundo**. Um dia inteiro, em **14 de novembro**, em Brasília.";
   const A_WHY = "Porque o BSidesBSB é o ponto de encontro da cena de segurança de Brasília: **conteúdo técnico de profundidade**, **networking real** e **sem barreira entre palco e plateia** — estagiário, blue team, red team, estudante e CISO no mesmo evento. É seguir o coelho branco e descer junto.";
   const RULES = [
@@ -708,7 +742,7 @@ if (cyberCursor) {
   const SVG_SEND = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>';
   const SVG_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>';
   const SVG_TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>';
-  const LS_HIST = 'bsb_bot_hist_v1', LS_DOCK = 'bsb_bot_dock_v1', LS_TIP = 'bsb_bot_tip_v1', LS_HINT = 'bsb_hold_hint_v1';
+  const LS_HIST = 'bsb_bot_hist_v1', LS_DOCK = 'bsb_bot_dock_v1', LS_TIP = 'bsb_bot_tip_v1';
   const isMobile = () => window.innerWidth <= 620;
   const dotLabel = () => isMobile() ? 'Voltar ao topo — segure para abrir o menu e o chat' : 'White Rabbit Bot — arraste para mover, toque para abrir';
   function buildOrbit(){
@@ -736,8 +770,8 @@ if (cyberCursor) {
     }
     return '<span class="bot-orbit" aria-hidden="true">' + html + '<span class="orbit-wave"></span><span class="orbit-wave w2"></span></span>';
   }
-  let goo, blob, trail, dotBtn, panel, msgsEl, input, sendBtn, tipEl, hintEl;
-  let open = false, live = false, pending = false, history = [], hintShown = false;
+  let goo, blob, trail, dotBtn, panel, msgsEl, input, sendBtn, tipEl;
+  let open = false, live = false, pending = false, history = [];
   const P = { x:0, y:0, tx:0, ty:0, px:0, py:0, ex:0, ey:0, svx:0, svy:0, squash:0, enter:0, enterT:0, hover:0, hoverT:0, dragging:false, side:'right', vw:1, vh:1, open:false };
   const M = 26;
   const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
@@ -775,7 +809,10 @@ if (cyberCursor) {
   }
   function restoreDock(){
     P.vw = Math.max(1, window.innerWidth);
-    P.vh = Math.max(1, window.innerHeight);
+    const vv = window.visualViewport;
+    const vh = vv ? vv.height : window.innerHeight;
+    const offTop = vv ? vv.offsetTop : 0;
+    P.vh = Math.max(1, vh);
     P.side = 'right';
     let yr = .58;
     try {
@@ -787,7 +824,7 @@ if (cyberCursor) {
       }
     } catch (e) {}
     P.x = P.tx = edgeX(P.side);
-    P.y = P.ty = clamp(P.vh * yr, M, P.vh - M);
+    P.y = P.ty = clamp(vh * yr + offTop, M, vh + offTop - M);
     P.px = P.x; P.py = P.y; P.ex = P.x; P.ey = P.y;
   }
   function saveDock(){
@@ -804,7 +841,9 @@ if (cyberCursor) {
     P.enter += (P.enterT - P.enter) * .11;
     if (P.enter < .001 && P.enterT === 0) P.enter = 0;
     const gOp = P.enter < .01 ? 0 : Math.min(1, P.enter * 1.25);
-    if (gOp !== P._go) { P._go = gOp; goo.style.opacity = gOp; goo.style.visibility = gOp === 0 ? 'hidden' : 'visible'; }
+    if (goo.classList.contains('inactive')) {
+      if (P._go !== 0.5) { P._go = 0.5; goo.style.opacity = 0.5; goo.style.visibility = 'visible'; }
+    } else if (gOp !== P._go) { P._go = gOp; goo.style.opacity = gOp; goo.style.visibility = gOp === 0 ? 'hidden' : 'visible'; }
     P.hover += (P.hoverT - P.hover) * .15;
     if (!P.dragging) { P.x += (P.tx - P.x) * .16; P.y += (P.ty - P.y) * .16; }
     const dx = P.x - P.px, dy = P.y - P.py;
@@ -843,7 +882,7 @@ if (cyberCursor) {
     if (gT !== P._gt) { P._gt = gT; goo.style.transform = gT; }
     const dT = 'translate(' + P.x.toFixed(1) + 'px,' + P.y.toFixed(1) + 'px)';
     if (dT !== P._dt) { P._dt = dT; dotBtn.style.transform = dT; }
-    if (hintShown) placeHint();
+    if (tipEl && tipEl.classList.contains('bot-tip-in')) placeTip();
     requestAnimationFrame(loop);
   }
   const drag = { offX: 0, offY: 0, moved: 0, id: null };
@@ -867,6 +906,8 @@ if (cyberCursor) {
   };
   function onDown(e){
     if (!live || P.open || P.dragging) return;
+    if (dotBtn) dotBtn.classList.remove('inactive');
+    if (goo) goo.classList.remove('inactive');
     P.dragging = true; drag.moved = 0; drag.id = e.pointerId;
     drag.offX = e.clientX - P.x; drag.offY = e.clientY - P.y;
     try { dotBtn.setPointerCapture(e.pointerId); } catch (err) {}
@@ -877,7 +918,6 @@ if (cyberCursor) {
         holdT = null;
         P.dragging = false; drag.id = null;
         clearOrbit(true);
-        dismissHint(true);
         if (window.__bsbMenu) window.__bsbMenu.open();
       }, HOLD);
     }
@@ -917,7 +957,6 @@ if (cyberCursor) {
     dotBtn.style.pointerEvents = 'none';
     try { localStorage.setItem(LS_TIP, '1'); } catch (e) {}
     if (tipEl) tipEl.classList.remove('bot-tip-in');
-    if (hintShown) dismissHint(true);
     if (!msgsEl.childElementCount){
       loadHist();
       if (history.length) history.forEach(m => addMsg(m.role === 'user' ? 'msg--user' : 'msg--bot', m.role === 'user' ? '' : QA.renderRich(m.content), m.content));
@@ -940,17 +979,6 @@ if (cyberCursor) {
     tipEl.style.transform = 'translateY(-50%)';
     if (P.side === 'right') { tipEl.style.right = (P.vw - P.x + 42) + 'px'; tipEl.style.left = 'auto'; }
     else { tipEl.style.left = (P.x + 42) + 'px'; tipEl.style.right = 'auto'; }
-  }
-  function placeHint(){
-    if (!hintEl || !hintShown) return;
-    hintEl.style.left = clamp(P.x, 74, Math.max(74, P.vw - 74)).toFixed(1) + 'px';
-    hintEl.style.top = (P.y - 42).toFixed(1) + 'px';
-  }
-  function dismissHint(persist){
-    if (!hintShown) { if (persist) { try { localStorage.setItem(LS_HINT, '1'); } catch (e) {} } return; }
-    hintShown = false;
-    if (hintEl) hintEl.classList.remove('bot-hint-in');
-    if (persist) { try { localStorage.setItem(LS_HINT, '1'); } catch (e) {} }
   }
   function send(forcedText){
     if (pending) return;
@@ -1010,12 +1038,6 @@ if (cyberCursor) {
     tipEl.id = 'bot-tip';
     tipEl.textContent = 'me pergunte sobre o evento';
     document.body.appendChild(tipEl);
-    hintEl = document.createElement('div');
-    hintEl.id = 'bot-hint';
-    hintEl.setAttribute('aria-hidden', 'true');
-    hintEl.textContent = 'clique e segure';
-    hintEl.style.transform = 'translate(-50%,-100%)';
-    document.body.appendChild(hintEl);
     panel = document.createElement('div');
     panel.id = 'bot-panel';
     panel.setAttribute('role', 'dialog');
@@ -1047,6 +1069,29 @@ if (cyberCursor) {
     renderChips();
     restoreDock();
     requestAnimationFrame(loop);
+    let initialScreenY = null;
+    let initialScreenX = null;
+    const updateFromVisualViewport = () => {
+      const vv = window.visualViewport;
+      if (!vv) return;
+      if (P.dragging || open) return;
+      if (initialScreenY === null) {
+        const yr = (() => { try { const r = JSON.parse(localStorage.getItem(LS_DOCK) || '{}'); return (r && typeof r.yr === 'number') ? clamp(r.yr, .08, .92) : .58; } catch(_) { return .58; } })();
+        initialScreenY = window.innerHeight * yr;
+        initialScreenX = P.x;
+      }
+      const newY = clamp(initialScreenY - vv.offsetTop, M, Math.max(M + 1, window.innerHeight - M));
+      P.ty = newY;
+      P.y = newY;
+      const newX = clamp(initialScreenX, M, Math.max(1, vv.width) - M);
+      P.tx = newX;
+      P.x = newX;
+    };
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateFromVisualViewport);
+      window.visualViewport.addEventListener('scroll', updateFromVisualViewport);
+      updateFromVisualViewport();
+    }
     window.addEventListener('resize', () => {
       P.vw = Math.max(1, window.innerWidth);
       P.vh = Math.max(1, window.innerHeight);
@@ -1057,22 +1102,36 @@ if (cyberCursor) {
       dotBtn.setAttribute('aria-label', dotLabel());
       if (open) placePanel();
     }, { passive: true });
+    let lastActivity = Date.now();
+    const resetActivity = () => {
+      lastActivity = Date.now();
+      if (dotBtn && !open && !P.dragging) dotBtn.classList.remove('inactive');
+      if (goo && !open && !P.dragging) goo.classList.remove('inactive');
+    };
+    document.addEventListener('mousemove', resetActivity, { passive: true });
+    document.addEventListener('touchstart', resetActivity, { passive: true });
+    document.addEventListener('keydown', resetActivity, { passive: true });
+    document.addEventListener('scroll', resetActivity, { passive: true });
+    setInterval(() => {
+      if (open || P.dragging) { lastActivity = Date.now(); if (dotBtn) dotBtn.classList.remove('inactive'); if (goo) goo.classList.remove('inactive'); return; }
+      if (Date.now() - lastActivity > 3000) {
+        if (dotBtn) dotBtn.classList.add('inactive');
+        if (goo) goo.classList.add('inactive');
+      }
+    }, 1000);
   }
   function entrance(){
     if (live) return;
     setTimeout(() => {
       live = true;
       P.enterT = 1;
+      P.enter = 1;
+      if (goo) { goo.style.opacity = 1; goo.style.visibility = 'visible'; P._go = 1; }
       placeTip();
-      if (tipEl) tipEl.textContent = isMobile() ? 'toque: topo · segure: menu + chat' : 'me pergunte sobre o evento';
-      let shown = false, hintDone = false;
+      if (tipEl) tipEl.textContent = isMobile() ? 'toque: topo · segure: menu' : 'me pergunte sobre o evento';
+      let shown = false;
       try { shown = localStorage.getItem(LS_TIP) === '1'; } catch (e) {}
-      try { hintDone = localStorage.getItem(LS_HINT) === '1'; } catch (e) {}
-      if (isMobile() && hintEl && !hintDone) {
-        setTimeout(() => {
-          if (!open && !hintShown && hintEl) { hintShown = true; placeHint(); hintEl.classList.add('bot-hint-in'); }
-        }, 1500);
-      } else if (!shown) {
+      if (!shown) {
         setTimeout(() => {
           if (!open && tipEl) tipEl.classList.add('bot-tip-in');
           setTimeout(() => { if (tipEl) tipEl.classList.remove('bot-tip-in'); }, 6500);
@@ -1093,4 +1152,94 @@ if (cyberCursor) {
 })();
 (function(){
   document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+})();
+(function(){
+  document.querySelectorAll('.program-card').forEach(function(card){
+    const link = card.querySelector('.program-card-cta, a[href], a[data-modal]');
+    if (!link) return;
+    card.addEventListener('click', function(e){
+      if (e.target.closest('a, button')) return;
+      link.click();
+    });
+  });
+})();
+(function(){
+  const banner = document.getElementById('location-banner');
+  if (!banner) return;
+  const mapWrap = banner.querySelector('.location-map');
+  if (mapWrap) {
+    mapWrap.addEventListener('wheel', function(e){ e.preventDefault(); }, { passive: false });
+    const cursor = document.getElementById('cyber-cursor');
+    if (cursor) {
+      mapWrap.addEventListener('mouseenter', function(){ cursor.classList.add('hidden'); });
+      mapWrap.addEventListener('mouseleave', function(){ cursor.classList.remove('hidden'); });
+    }
+  }
+})();
+(function(){
+  const track = document.querySelector('.marquee-track');
+  if (!track) return;
+  const template = track.querySelector('.marquee-group');
+  if (!template) return;
+  function fill() {
+    const vw = Math.max(1, window.innerWidth);
+    let groupW = template.getBoundingClientRect().width;
+    if (!groupW || groupW < 50) groupW = 280;
+    const needed = Math.ceil((2.05 * vw) / groupW) + 2;
+    const finalCount = needed % 2 === 0 ? needed : needed + 1;
+    while (track.children.length < finalCount) {
+      track.appendChild(template.cloneNode(true));
+    }
+  }
+  fill();
+  let t = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(t);
+    t = setTimeout(fill, 250);
+  });
+  if (document.readyState === 'complete') fill();
+  else window.addEventListener('load', fill);
+  setTimeout(fill, 600);
+  setTimeout(fill, 1800);
+})();
+(function(){
+  const modal = document.getElementById('modal-agenda');
+  if (!modal) return;
+  const tabs = modal.querySelectorAll('.agenda-tab');
+  const rows = modal.querySelectorAll('.agenda-row');
+  function filterAgenda(stage) {
+    rows.forEach(function(r) {
+      const rowCells = r.querySelectorAll('.agenda-cell');
+      if (stage === 'all') {
+        r.style.display = '';
+        r.style.gridTemplateColumns = '';
+        rowCells.forEach(function(c){ c.style.display = ''; });
+      } else {
+        const stages = (r.dataset.stages || '').split(',').map(function(s){ return s.trim(); });
+        if (!stages.includes(stage) && !stages.includes('all')) {
+          r.style.display = 'none';
+          return;
+        }
+        r.style.display = '';
+        r.style.gridTemplateColumns = '120px 1fr';
+        rowCells.forEach(function(c) {
+          const cs = c.dataset.stage;
+          if (c.classList.contains('agenda-cell-time') || c.classList.contains('agenda-cell-full')) c.style.display = '';
+          else if (cs === stage) c.style.display = '';
+          else c.style.display = 'none';
+        });
+      }
+    });
+  }
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      const stage = tab.dataset.stage;
+      tabs.forEach(function(t) {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      filterAgenda(stage);
+    });
+  });
 })();

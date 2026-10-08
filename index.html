@@ -100,7 +100,7 @@
       <a href="#palestrantes">Palestrantes</a>
       <a href="#trilhas">Trilhas</a>
       <a href="#agenda">Agenda</a>
-      <a href="#ctf">CTF</a>
+      <a href="#experiencia">CTF</a>
       <a href="#historico">Histórico</a>
       <a href="#patrocinadores">Patrocínio</a>
       <a href="#conduta">Conduta</a>
@@ -120,11 +120,11 @@
       <div class="hero-rabbit-ghost" aria-hidden="true"></div>
       <div class="cine-sweep" aria-hidden="true"></div>
       <div class="hero-ui">
-        <div class="hero-meta" data-glitch>14 DE NOVEMBRO DE 2026 <span>•</span> BRASÍLIA <span>•</span> LOCAL EM BREVE</div>
+        <a class="hero-meta" data-glitch href="https://www.google.com/calendar/render?action=TEMPLATE&text=BSidesBSB+2026+Down+the+Rabbit+Hole&dates=20261114T120000Z/20261114T220000Z&ctz=America/Sao_Paulo&details=A+conferencia+de+seguranca+da+informacao+feita+pela+comunidade+e+para+a+comunidade+hacker+de+Brasilia&location=Brasilia+Brasil" target="_blank" rel="noopener noreferrer" aria-label="Adicionar BSidesBSB 2026 ao calendário (14 de novembro, Brasília)" title="Adicionar ao calendário"><svg class="hero-meta-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 3v4M16 3v4"></path></svg>14 DE NOVEMBRO DE 2026 <span>•</span> BRASÍLIA <span>•</span> LOCAL EM BREVE</a>
         <div class="hero-copy">
           <p>A conferência de segurança da informação feita pela comunidade e para a comunidade hacker de Brasília. Siga o coelho branco até o outro lado.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://forms.gle/KVSwddLpnSnXQfta9" target="_blank" rel="noopener noreferrer">Chamada de palestras ↗</a>
+            <a class="btn btn-primary" href="https://www.sympla.com.br/evento/security-bsides-brasilia-bsidesbsb-2026/3572551" target="_blank" rel="noopener noreferrer">Adquira seu acesso ↗</a>
             <a class="btn btn-outline" href="#sobre">Entrar na toca ↓</a>
           </div>
         </div>
@@ -159,9 +159,19 @@
           </article>
         </div>
       </div>
-      <div class="location-banner">
-        <div><div class="eyebrow">LOCAL</div><h3>Brasília <span>14.11.2026</span></h3><p>O local exato será divulgado em breve, com mapa, acesso e dicas de hospedagem.</p></div>
-        <img src="assets/crops/city-skyline.jpg" alt="Skyline futurista inspirado em Brasília" loading="lazy">
+      <div class="location-banner" id="location-banner">
+        <div>
+          <div class="eyebrow">LOCAL</div>
+          <h3>Brasília <span>14.11.2026</span></h3>
+          <p class="location-address">O local exato será divulgado em breve, com mapa, acesso e dicas de hospedagem.</p>
+          <a class="location-map-link" href="https://www.google.com/maps/place/Bras%C3%ADlia+-+Plano+Piloto,+Bras%C3%ADlia+-+DF" target="_blank" rel="noopener noreferrer">Abrir no mapa ↗</a>
+          <span class="location-map-hint">Passe o mouse para ver o mapa interativo</span>
+        </div>
+        <div class="location-map" aria-label="Mapa de Brasília">
+          <img class="location-image" src="assets/crops/city-skyline.jpg" alt="Skyline futurista inspirado em Brasília" loading="lazy">
+          <div class="location-map-tint" aria-hidden="true"></div>
+          <iframe class="location-map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34976.508443312334!2d-47.89874050935865!3d-15.792189539069465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3d18df9ae275%3A0x738470e469754a24!2sBras%C3%ADlia%20-%20Plano%20Piloto%2C%20Bras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1791420930567!5m2!1spt-BR!2sbr" loading="lazy" title="Mapa — localização do BSidesBSB 2026 em Brasília" style="border:0;" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
       </div>
       <div class="keywords-marquee" aria-hidden="true">
         <div class="marquee-track">
@@ -179,7 +189,10 @@
       <div class="section-head-row">
         <div>
           <div class="eyebrow">PALESTRANTES</div>
-          <h2 data-glitch>Escolha a sua <span>porta</span>.</h2>
+          <div class="title-row">
+            <h2 data-glitch>Escolha a sua <span>porta</span>.</h2>
+            <a class="btn btn-primary section-cta-inline" href="https://forms.gle/KVSwddLpnSnXQfta9" target="_blank" rel="noopener noreferrer">Chamada de palestras ↗</a>
+          </div>
         </div>
         <p>Quatro trilhas. Cinco espaços por grupo. Arraste, deslize ou use as setas.</p>
       </div>
@@ -195,10 +208,10 @@
         <p>Do conceito ao exploit, do patch ao painel da comunidade: cada mundo tem sua linguagem e seu ritmo.</p>
       </div>
       <div class="theme-grid">
-        <article class="theme-card theme-rabbit"><div class="theme-image"><img src="assets/crops/rabbit-hole.png" alt="Coelho Branco cibernético em neon" loading="lazy"></div><div><span>01</span><h3>Coelho Branco</h3><p>Keynotes e talks principais: as grandes ideias que abrem o buraco do coelho e puxam a comunidade para dentro. Pensamentos longos, visões amplas e ideias que vale a pena discutir no corredor depois: keynote de abertura, panorama de ameaças do ano, cultura hacker e tendências da segurança.</p></div></article>
-        <article class="theme-card theme-cat"><div class="theme-image"><img src="assets/crops/cheshire.jpg" alt="Gato de Cheshire em estética neon" loading="lazy"></div><div><span>02</span><h3>Gato de Cheshire</h3><p>Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro. Pensamento de atacante: explorar, contornar, escalar e desviar, do web/pwn/kernel ao cloud, passando por engenharia social e OSINT.</p></div></article>
-        <article class="theme-card theme-queen"><div class="theme-image"><img src="assets/crops/queen.jpg" alt="Rainha de Copas em estética neon" loading="lazy"></div><div><span>03</span><h3>Rainha de Copas</h3><p>Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos. O lado que mantém a organização viva depois que o atacante entra: threat hunting, DFIR, forense digital e GRC.</p></div></article>
-        <article class="theme-card theme-hatter"><div class="theme-image"><img src="assets/crops/hatter.jpg" alt="Chapeleiro em estética neon" loading="lazy"></div><div><span>04</span><h3>Chapeleiro</h3><p>Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático. Mão na massa: todo mundo aprende fazendo, errando e refazendo. Workshops práticos, labs ao vivo, lightning talks de 10 min e painel aberto da comunidade.</p></div></article>
+        <article class="theme-card theme-rabbit"><div class="theme-image"><img src="assets/crops/rabbit-hole.png" alt="Coelho Branco cibernético em neon" loading="lazy"></div><div><div class="theme-head"><span>01</span><h3>Coelho Branco</h3></div><p>Keynotes e talks principais: as grandes ideias que abrem o buraco do coelho e puxam a comunidade para dentro. Pensamentos longos, visões amplas e ideias que vale a pena discutir no corredor depois: keynote de abertura, panorama de ameaças do ano, cultura hacker e tendências da segurança.</p></div></article>
+        <article class="theme-card theme-cat"><div class="theme-image"><img src="assets/crops/cheshire.jpg" alt="Gato de Cheshire em estética neon" loading="lazy"></div><div><div class="theme-head"><span>02</span><h3>Gato de Cheshire</h3></div><p>Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro. Pensamento de atacante: explorar, contornar, escalar e desviar, do web/pwn/kernel ao cloud, passando por engenharia social e OSINT.</p></div></article>
+        <article class="theme-card theme-queen"><div class="theme-image"><img src="assets/crops/queen.jpg" alt="Rainha de Copas em estética neon" loading="lazy"></div><div><div class="theme-head"><span>03</span><h3>Rainha de Copas</h3></div><p>Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos. O lado que mantém a organização viva depois que o atacante entra: threat hunting, DFIR, forense digital e GRC.</p></div></article>
+        <article class="theme-card theme-hatter"><div class="theme-image"><img src="assets/crops/hatter.jpg" alt="Chapeleiro em estética neon" loading="lazy"></div><div><div class="theme-head"><span>04</span><h3>Chapeleiro</h3></div><p>Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático. Mão na massa: todo mundo aprende fazendo, errando e refazendo. Workshops práticos, labs ao vivo, lightning talks de 10 min e painel aberto da comunidade.</p></div></article>
       </div>
     </section>
 
@@ -229,7 +242,7 @@
             <div class="card-kicker">COMPETIÇÃO COM PRÊMIOS</div>
             <h3 class="ctf-title" data-glitch>CTF</h3>
             <p>Competição oficial durante o evento, com desafios de web, pwn, crypto, forense, OSINT e misc: para todos os níveis, do iniciante ao avançado. Inscrição na hora, individual ou em equipe. Prêmios para o top 3.</p>
-            <a href="#contato">QUERO SER AVISADO →</a>
+            <a href="https://www.instagram.com/bsidesbsb/" target="_blank" rel="noopener noreferrer">QUERO SER AVISADO →</a>
           </div>
         </article>
       </div>
@@ -242,11 +255,10 @@
         <p>Lineup, agenda, competição, inscrições e local: o roteiro completo da edição 2026.</p>
       </div>
       <div class="program-grid">
-        <article class="program-card"><span>01</span><div class="program-image"><img src="assets/crops/portal.jpg" alt="Portal neon" loading="lazy"></div><h3>Palestrantes</h3><p>A lineup completa da edição 2026 será anunciada em breve: 4 trilhas, 16+ palestras, keynotes, workshops e lightning talks.</p><a href="#palestrantes">QUERO PALESTRAR →</a></article>
-        <article class="program-card"><span>02</span><div class="program-image"><img src="assets/crops/clock.jpg" alt="Relógio futurista" loading="lazy"></div><h3>Agenda</h3><p>A programação completa da edição 2026 será divulgada em breve. Fique de olho nas redes sociais para não perder.</p><a href="#contato">QUERO SER AVISADO →</a></article>
-        <article class="program-card"><span>03</span><div class="program-image"><img src="assets/crops/falling-tunnel.jpg" alt="Túnel de dados" loading="lazy"></div><h3>CTF</h3><p>Atravesse o espelho e cace flags em equipe: placar ao vivo, desafios para todos os níveis e prêmios para o top 3.</p><a href="#ctf">VER O CTF →</a></article>
-        <article class="program-card" id="inscricao"><span>04</span><div class="program-image"><img src="assets/crops/neon-door.jpg" alt="Porta neon" loading="lazy"></div><h3>Inscrição</h3><p>As inscrições para o BSidesBSB 2026 serão abertas em breve. Acompanhe pelas redes sociais: vagas limitadas.</p><a href="#contato">QUERO SER AVISADO →</a></article>
-        <article class="program-card" id="local"><span>05</span><div class="program-image"><img src="assets/crops/city-skyline.jpg" alt="Brasília neon" loading="lazy"></div><h3>Local</h3><p>Brasília vira Wonderland por um dia — o endereço exato será revelado em breve.</p><a href="#contato">EM BREVE →</a></article>
+        <article class="program-card"><span>01</span><div class="program-image"><img src="assets/crops/portal.jpg" alt="Portal neon" loading="lazy"></div><h3>Palestrantes</h3><p>A lineup completa da edição 2026 será anunciada em breve: 4 trilhas, 16+ palestras, keynotes, workshops e lightning talks.</p><a class="program-card-cta" href="https://forms.gle/KVSwddLpnSnXQfta9" target="_blank" rel="noopener noreferrer">QUERO PALESTRAR →</a></article>
+        <article class="program-card"><span>02</span><div class="program-image"><img src="assets/crops/clock.jpg" alt="Relógio futurista" loading="lazy"></div><h3>Agenda</h3><p>Confira o cronograma completo da edição 2026: palestras em 4 palcos, CTF o dia inteiro e villages temáticas, organizados por horário.</p><a class="program-card-cta" data-modal="modal-agenda" href="#agenda" role="button">VER A AGENDA →</a></article>
+        <article class="program-card" id="inscricao"><span>03</span><div class="program-image"><img src="assets/crops/neon-door.jpg" alt="Porta neon" loading="lazy"></div><h3>Inscrição</h3><p>Os ingressos para o BSidesBSB 2026 estão disponíveis no Sympla. Garanta seu acesso antes que as vagas acabem.</p><a class="program-card-cta" href="https://www.sympla.com.br/evento/security-bsides-brasilia-bsidesbsb-2026/3572551" target="_blank" rel="noopener noreferrer">ADQUIRIR INGRESSO →</a></article>
+        <article class="program-card" id="local"><span>04</span><div class="program-image"><img src="assets/crops/city-skyline.jpg" alt="Brasília neon" loading="lazy"></div><h3>Local</h3><p>Brasília vira Wonderland por um dia — veja o mapa e como chegar na seção local.</p><a class="program-card-cta" href="#location-banner">VER O LOCAL →</a></article>
       </div>
       </div>
     </section>
@@ -281,7 +293,7 @@
           </div>
           <div class="rail-area">
             <div class="rail-head"><div class="rail-title">PREMIUM &amp; GOLD</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></button><button type="button" data-dir="next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
-            <div class="rail" data-sponsor-set="premium" data-sponsor-count="5" data-sponsor-label="PATROCINADOR"></div>
+            <div class="rail" data-sponsor-set="premium" data-sponsor-count="3" data-sponsor-label="PATROCINADOR"></div>
           </div>
         </section>
         <section class="track-row sponsor-row" style="--track-accent:#2dd7ff;--track-bg:url('assets/crops/light-waves.png')">
@@ -292,7 +304,7 @@
           </div>
           <div class="rail-area">
             <div class="rail-head"><div class="rail-title">SILVER &amp; THEMATIC</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></button><button type="button" data-dir="next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
-            <div class="rail" data-sponsor-set="parceiros" data-sponsor-count="5" data-sponsor-label="PARCEIRO"></div>
+            <div class="rail" data-sponsor-set="parceiros" data-sponsor-count="7" data-sponsor-label="PARCEIRO"></div>
           </div>
         </section>
       </div>
@@ -412,6 +424,106 @@
     </div>
   </div>
 
+  <div class="modal" id="modal-agenda" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog agenda-dialog" role="dialog" aria-modal="true" aria-label="Agenda BSidesBSB 2026">
+      <button class="modal-close" type="button" data-close aria-label="Fechar">✕</button>
+      <div class="modal-head">
+        <div class="eyebrow dark">AGENDA · 14.11.2026</div>
+        <h3>BSidesBSB 2026 · Down the Rabbit Hole</h3>
+      </div>
+      <div class="modal-body agenda-body">
+        <p class="agenda-intro">Programação dividida por <strong>palcos</strong> e <strong>horários</strong>. O CTF roda o dia inteiro em paralelo às trilhas. Os títulos das palestras serão confirmados conforme a chamada de palestras for fechada.</p>
+        <div class="agenda-tabs" role="tablist" aria-label="Filtrar por palco">
+          <button type="button" class="agenda-tab is-active" data-stage="all" role="tab" aria-selected="true">Todos</button>
+          <button type="button" class="agenda-tab" data-stage="coelho" role="tab">Coelho Branco</button>
+          <button type="button" class="agenda-tab" data-stage="cheshire" role="tab">Gato de Cheshire</button>
+          <button type="button" class="agenda-tab" data-stage="rainha" role="tab">Rainha de Copas</button>
+          <button type="button" class="agenda-tab" data-stage="chapeleiro" role="tab">Chapeleiro</button>
+          <button type="button" class="agenda-tab" data-stage="ctf" role="tab">CTF</button>
+        </div>
+        <div class="agenda-table" aria-label="Cronograma do evento">
+          <div class="agenda-row agenda-head" data-stages="all">
+            <div class="agenda-cell agenda-cell-time">Horário</div>
+            <div class="agenda-cell" data-stage="coelho">Palco Coelho Branco</div>
+            <div class="agenda-cell" data-stage="cheshire">Palco Gato de Cheshire</div>
+            <div class="agenda-cell" data-stage="rainha">Palco Rainha de Copas</div>
+            <div class="agenda-cell" data-stage="chapeleiro">Palco Chapeleiro</div>
+          </div>
+          <div class="agenda-row" data-stages="coelho">
+            <div class="agenda-cell agenda-cell-time">08:00 — 09:00</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Credenciamento &amp; Café</strong><em>Recepção dos participantes</em></div>
+            <div class="agenda-cell agenda-cell-empty" data-stage="cheshire">—</div>
+            <div class="agenda-cell agenda-cell-empty" data-stage="rainha">—</div>
+            <div class="agenda-cell agenda-cell-empty" data-stage="chapeleiro">—</div>
+          </div>
+          <div class="agenda-row" data-stages="coelho">
+            <div class="agenda-cell agenda-cell-time">09:00 — 10:00</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Abertura &amp; Keynote</strong><em>Abertura oficial do BSidesBSB 2026</em></div>
+            <div class="agenda-cell agenda-cell-empty" data-stage="cheshire">—</div>
+            <div class="agenda-cell agenda-cell-empty" data-stage="rainha">—</div>
+            <div class="agenda-cell agenda-cell-empty" data-stage="chapeleiro">—</div>
+          </div>
+          <div class="agenda-row" data-stages="coelho,cheshire,rainha,chapeleiro">
+            <div class="agenda-cell agenda-cell-time">10:00 — 11:00</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Palestra a confirmar</strong><em>Keynote / talk principal</em></div>
+            <div class="agenda-cell" data-stage="cheshire"><strong>Palestra a confirmar</strong><em>Red team / pentest</em></div>
+            <div class="agenda-cell" data-stage="rainha"><strong>Palestra a confirmar</strong><em>Blue team / DFIR</em></div>
+            <div class="agenda-cell" data-stage="chapeleiro"><strong>Workshop a confirmar</strong><em>Lab hands-on</em></div>
+          </div>
+          <div class="agenda-row" data-stages="coelho,cheshire,rainha,chapeleiro">
+            <div class="agenda-cell agenda-cell-time">11:00 — 12:00</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Palestra a confirmar</strong><em>Cultura hacker / tendências</em></div>
+            <div class="agenda-cell" data-stage="cheshire"><strong>Palestra a confirmar</strong><em>Exploração / web / pwn</em></div>
+            <div class="agenda-cell" data-stage="rainha"><strong>Palestra a confirmar</strong><em>Threat hunting / GRC</em></div>
+            <div class="agenda-cell" data-stage="chapeleiro"><strong>Lightning talks</strong><em>Talks relâmpago de 10 min</em></div>
+          </div>
+          <div class="agenda-row agenda-row-break" data-stages="all">
+            <div class="agenda-cell agenda-cell-time">12:00 — 13:30</div>
+            <div class="agenda-cell agenda-cell-full"><strong>Almoço &amp; Networking</strong><em>Pausa para almoço — villages abertas</em></div>
+          </div>
+          <div class="agenda-row" data-stages="coelho,cheshire,rainha,chapeleiro">
+            <div class="agenda-cell agenda-cell-time">13:30 — 14:30</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Palestra a confirmar</strong><em>Painel da comunidade</em></div>
+            <div class="agenda-cell" data-stage="cheshire"><strong>Palestra a confirmar</strong><em>Cloud / kernel / OSINT</em></div>
+            <div class="agenda-cell" data-stage="rainha"><strong>Palestra a confirmar</strong><em>Resposta a incidentes</em></div>
+            <div class="agenda-cell" data-stage="chapeleiro"><strong>Workshop a confirmar</strong><em>Lab hands-on</em></div>
+          </div>
+          <div class="agenda-row" data-stages="coelho,cheshire,rainha,chapeleiro">
+            <div class="agenda-cell agenda-cell-time">14:30 — 15:30</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Palestra a confirmar</strong><em>Keynote / talk</em></div>
+            <div class="agenda-cell" data-stage="cheshire"><strong>Palestra a confirmar</strong><em>Engenharia social</em></div>
+            <div class="agenda-cell" data-stage="rainha"><strong>Palestra a confirmar</strong><em>Forense digital</em></div>
+            <div class="agenda-cell" data-stage="chapeleiro"><strong>Lightning talks</strong><em>Talks relâmpago de 10 min</em></div>
+          </div>
+          <div class="agenda-row" data-stages="coelho,cheshire,rainha,chapeleiro">
+            <div class="agenda-cell agenda-cell-time">15:30 — 16:30</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Palestra a confirmar</strong><em>Painel / debate</em></div>
+            <div class="agenda-cell" data-stage="cheshire"><strong>Palestra a confirmar</strong><em>Pentest / exploração</em></div>
+            <div class="agenda-cell" data-stage="rainha"><strong>Palestra a confirmar</strong><em>Defesa / hardening</em></div>
+            <div class="agenda-cell" data-stage="chapeleiro"><strong>Workshop a confirmar</strong><em>Lab hands-on</em></div>
+          </div>
+          <div class="agenda-row" data-stages="coelho,cheshire,rainha,chapeleiro">
+            <div class="agenda-cell agenda-cell-time">16:30 — 17:30</div>
+            <div class="agenda-cell" data-stage="coelho"><strong>Palestra a confirmar</strong><em>Talk principal</em></div>
+            <div class="agenda-cell" data-stage="cheshire"><strong>Palestra a confirmar</strong><em>Crypto / misc</em></div>
+            <div class="agenda-cell" data-stage="rainha"><strong>Palestra a confirmar</strong><em>IR / ameaças</em></div>
+            <div class="agenda-cell" data-stage="chapeleiro"><strong>Painel aberto</strong><em>Painel da comunidade</em></div>
+          </div>
+          <div class="agenda-row agenda-row-ctf" data-stages="ctf">
+            <div class="agenda-cell agenda-cell-time">09:00 — 18:30</div>
+            <div class="agenda-cell agenda-cell-full" data-stage="ctf"><strong>CTF oficial · o dia inteiro</strong><em>Desafios de web, pwn, crypto, forense, OSINT e misc — individual ou em equipe. Prêmios para o top 3.</em></div>
+          </div>
+          <div class="agenda-row agenda-row-break" data-stages="all">
+            <div class="agenda-cell agenda-cell-time">17:30 — 18:30</div>
+            <div class="agenda-cell agenda-cell-full"><strong>Encerramento &amp; Premiação do CTF</strong><em>Encerramento oficial e premiação do top 3</em></div>
+          </div>
+        </div>
+        <p class="agenda-note">Os horários e títulos são preliminares e podem mudar. A grade final sai próximo ao evento, pelas redes oficiais.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="modal" id="modal-speaker" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-dialog speaker-dialog" role="dialog" aria-modal="true" aria-label="Detalhes do palestrante">
@@ -421,6 +533,7 @@
         <div class="speaker-modal-info">
           <span class="speaker-modal-tag" id="speaker-modal-track"></span>
           <h3 id="speaker-modal-name">Nome em breve</h3>
+          <div class="speaker-modal-talk" id="speaker-modal-talk"></div>
           <div class="speaker-modal-role" id="speaker-modal-role"></div>
           <p id="speaker-modal-desc"></p>
           <p class="speaker-modal-note"><strong>Lineup 2026:</strong> a escalação completa será anunciada em breve. Quer esse lugar no palco? Inscreva a sua palestra na chamada de palestras do BSidesBSB.</p>
@@ -438,7 +551,7 @@
         <a href="#palestrantes" style="--i:1"><i>02</i><b>Palestrantes</b><small>cd ~/palestrantes</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
         <a href="#trilhas" style="--i:2"><i>03</i><b>Trilhas</b><small>cd ~/trilhas</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
         <a href="#agenda" style="--i:3"><i>04</i><b>Agenda</b><small>cd ~/agenda</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
-        <a href="#ctf" style="--i:4"><i>05</i><b>CTF</b><small>cd ~/ctf</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
+        <a href="#experiencia" style="--i:4"><i>05</i><b>CTF</b><small>cd ~/experiencia</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
         <a href="#historico" style="--i:5"><i>06</i><b>Hist&oacute;rico</b><small>cd ~/historico</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
         <a href="#patrocinadores" style="--i:6"><i>07</i><b>Patroc&iacute;nio</b><small>cd ~/patrocinio</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
         <a href="#conduta" style="--i:7"><i>08</i><b>Conduta</b><small>cd ~/conduta</small><em class="mm-arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></em></a>
