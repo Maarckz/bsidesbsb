@@ -1,23 +1,39 @@
 const tracks = [
-  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem o evento e ficam ecoando na cabeça.', images:[1,2,3,4,5], featured:{ name:'Wolmer Andrade Godoi', talk:'Patchmageddon — O que a IA fez com a segurança de software e por que não estamos prontos para o resultado' } },
-  { key:'cheshire', name:'Gato de Cheshire', tag:'TRILHA 02', role:'RED TEAM / PENTEST', accent:'#ff28dc', bg:'url("assets/crops/cheshire.jpg")', fig:'assets/crops/cheshire.jpg', figPos:'center 30%', desc:'Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro.', images:[6,7,8,9,10], featured:{ name:'Ygor da Rocha (DMR)', talk:'Evasão de Antivirus e Antimalware' } },
-  { key:'queen', name:'Rainha de Copas', tag:'TRILHA 03', role:'BLUE TEAM / IR', accent:'#71b9ff', bg:'url("assets/crops/queen.jpg")', fig:'assets/crops/queen.jpg', figPos:'center 25%', desc:'Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos.', images:[1,3,5,7,9], featured:{ name:'Alexandre Silva (Alexos)', talk:'LeakOps: Automação e caça a vazamentos com o Data Leak Hunter v2' } },
-  { key:'hatter', name:'Chapeleiro', tag:'TRILHA 04', role:'WORKSHOP / LAB', accent:'#c17aff', bg:'url("assets/crops/hatter.jpg")', fig:'assets/crops/hatter.jpg', figPos:'center 28%', desc:'Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático.', images:[2,4,6,8,10], featured:{ name:'Allan Kardec', talk:'Excalidraw: Do whiteboard ao acesso inicial' } }
+  { key:'rabbit', name:'Coelho Branco', tag:'TRILHA 01', role:'KEYNOTE / TALK', accent:'#2dd7ff', bg:'url("assets/crops/city-skyline.jpg")', fig:'assets/crops/titlerabbit-hole.png', figPos:'50% 34%', figZoom:2.3, desc:'Keynotes e talks principais: as grandes ideias que abrem o evento e ficam ecoando na cabeça.', images:[1,2,3,4,5], featured:[
+    { name:'Wolmer Andrade Godoi', talk:'Patchmageddon — O que a IA fez com a segurança de software e por que não estamos prontos para o resultado', photo:'assets/talkers/wolmer-godoi.jpg', role:'Especialista em AppSec & IA', bio:'Atua há mais de uma década com segurança de aplicações, DevSecOps e pesquisa em IA aplicada à segurança. No Patchmageddon, Wolmer apresenta um raio-x do que mudou depois que modelos generativos entraram no pipeline de desenvolvimento — do código gerado automaticamente aos novos vetores de ataque que ninguém ainda mapeou direito. Uma palestra de confronto: o que a IA facilitou para defensores e o que ela tornou exponencialmente mais perigoso para quem ainda trata segurança como etapa final.' },
+    { name:'Rafael Santos', talk:'A confirmar', photo:'assets/talkers/rafael-santos.jpg', role:'A confirmar', bio:'Palestrante confirmado da trilha Coelho Branco. O tema e a bio detalhada serão anunciados em breve pela organização do BSidesBSB 2026 — fique de olho nos canais oficiais para não perder o line-up completo.' }
+  ] },
+  { key:'cheshire', name:'Gato de Cheshire', tag:'TRILHA 02', role:'RED TEAM / PENTEST', accent:'#ff28dc', bg:'url("assets/crops/cheshire.jpg")', fig:'assets/crops/cheshire.jpg', figPos:'center 30%', desc:'Segurança ofensiva: red team, exploração e pentest. As perguntas certas, feitas com um sorriso no escuro.', images:[6,7,8,9,10], featured:[
+    { name:'Ygor da Rocha (DMR)', talk:'Evasão de Antivirus e Antimalware', photo:'assets/talkers/dmr.jpg', role:'Red Team Operator / Malware Researcher', bio:'Pesquisador focado em técnicas ofensivas, evasão de EDR/AV e desenvolvimento de ferramentas para operações de red team. No BSidesBSB 2026, Ygor desmonta as estratégias clássicas e modernas usadas por malwares reais para bypassar soluções de endpoint — do unhooking de DLLs à manipulação de memoria direta, passando por técnicas de injeção e ofuscação que ainda funcionam em ambientes corporativos. Uma sessão prática, sem slide decorado, focada no que realmente sobrevive em campo.' }
+  ] },
+  { key:'queen', name:'Rainha de Copas', tag:'TRILHA 03', role:'BLUE TEAM / IR', accent:'#71b9ff', bg:'url("assets/crops/queen.jpg")', fig:'assets/crops/queen.jpg', figPos:'center 25%', desc:'Defesa e resposta: blue team, forense e resposta a incidentes. Aqui não se corta cabeças: se cortam riscos.', images:[1,3,5,7,9], featured:[
+    { name:'Alexandre Silva (Alexos)', talk:'LeakOps: Automação e caça a vazamentos com o Data Leak Hunter v2', photo:'assets/talkers/alexos.jpg', role:'Threat Intelligence / OSINT Specialist', bio:'Especialista em inteligência de ameaças e OSINT, com foco em monitoramento de vazamentos de dados e exposição de identidades em ambientes abertos e clandestinos. Nesta palestra, Alexos apresenta a versão 2 do Data Leak Hunter: uma plataforma open-source que automatiza a busca, correlação e alerta de credenciais e documentos vazados. Ele mostra a arquitetura, os desafios de escalar varreduras em múltiplas fontes e como times de resposta podem integrar o tooling ao SOC para encurtar o tempo entre o vazamento e a contenção.' }
+  ] },
+  { key:'hatter', name:'Chapeleiro', tag:'TRILHA 04', role:'WORKSHOP / LAB', accent:'#c17aff', bg:'url("assets/crops/hatter.jpg")', fig:'assets/crops/hatter.jpg', figPos:'center 28%', desc:'Workshops e hands-on: labs, lightning talks e aquele chá das cinco malucamente prático.', images:[2,4,6,8,10], featured:[
+    { name:'Allan Kardec', talk:'Excalidraw: Do whiteboard ao acesso inicial', photo:'assets/talkers/kardeco.jpg', role:'Offensive Security / Hands-on Instructor', bio:'Instrutor e pesquisador com vivência em simulações de ataque e capacitação de times defensivos. No workshop do Chapeleiro, Kardeco transforma o Excalidraw — ferramenta de whiteboard simples e colaborativa — em um canvas vivo para planejar e documentar caminhos de acesso inicial. Os participantes vão desenhar kill chains, mapear superfícies de ataque e validar hipóteses na prática, sem slides e com mão na massa. Uma sessão para quem aprende fazendo: do esboço do ataque ao primeiro shell, com espaço para erro, refatoração e discussão aberta.' }
+  ] }
 ];
 const photoFor = n => `assets/crops/speaker-${String(n).padStart(2,'0')}.jpg`;
 const tracksEl = document.getElementById('tracks');
 function makeCard(track, n, copyIndex){
   const slot = String(copyIndex).padStart(2,'0');
-  const photo = photoFor(n);
-  const featured = (copyIndex === 1 && track.featured) ? track.featured : null;
-  const speakerName = featured ? featured.name : 'Nome em breve';
-  const talk = featured ? featured.talk : '';
-  const roleShown = featured ? talk : track.role;
-  const chip = featured ? 'confirmado' : 'em breve';
+  const featuredEntry = track.featured && track.featured[copyIndex - 1] ? track.featured[copyIndex - 1] : null;
+  const photo = featuredEntry && featuredEntry.photo ? featuredEntry.photo : '';
+  const speakerName = featuredEntry ? featuredEntry.name : 'Nome em breve';
+  const talk = featuredEntry ? featuredEntry.talk : '';
+  const speakerRole = featuredEntry && featuredEntry.role ? featuredEntry.role : '';
+  const speakerBio = featuredEntry && featuredEntry.bio ? featuredEntry.bio : '';
+  const roleShown = featuredEntry ? (talk || speakerRole || track.role) : track.role;
+  const chip = featuredEntry ? 'confirmado' : 'em breve';
   const talkAttr = talk ? ` data-talk="${talk.replace(/"/g,'&quot;')}"` : '';
-  const nameAttr = featured ? ` data-speaker-name="${speakerName.replace(/"/g,'&quot;')}"` : '';
-  return `<article class="speaker-card" style="--track-accent:${track.accent}" tabindex="0" role="button" aria-label="Posição ${slot} da trilha ${track.name}: ver detalhes" data-photo="${photo}" data-slot="${slot}" data-track-name="${track.name}" data-track-tag="${track.tag}" data-role="${track.role}" data-desc="${track.desc}"${talkAttr}${nameAttr}>
-    <div class="speaker-photo"><img src="${photo}" alt="Foto de palestrante · ${track.name}, posição ${copyIndex}" loading="lazy"></div>
+  const nameAttr = featuredEntry ? ` data-speaker-name="${speakerName.replace(/"/g,'&quot;')}"` : '';
+  const roleAttr = speakerRole ? ` data-speaker-role="${speakerRole.replace(/"/g,'&quot;')}"` : '';
+  const bioAttr = speakerBio ? ` data-speaker-bio="${speakerBio.replace(/"/g,'&quot;')}"` : '';
+  const photoHtml = photo
+    ? `<img src="${photo}" alt="Foto de palestrante · ${track.name}, posição ${copyIndex}" loading="lazy">`
+    : `<div class="speaker-photo-placeholder"><span>em breve</span></div>`;
+  return `<article class="speaker-card" style="--track-accent:${track.accent}" tabindex="0" role="button" aria-label="Posição ${slot} da trilha ${track.name}: ver detalhes" data-photo="${photo}" data-slot="${slot}" data-track-name="${track.name}" data-track-tag="${track.tag}" data-role="${track.role}" data-desc="${track.desc}"${talkAttr}${nameAttr}${roleAttr}${bioAttr}>
+    <div class="speaker-photo">${photoHtml}</div>
     <div class="speaker-body">
       <div class="slot">posição ${slot}</div>
       <div class="speaker-name">${speakerName}</div>
@@ -27,7 +43,8 @@ function makeCard(track, n, copyIndex){
   </article>`;
 }
 function trackMarkup(track){
-  const core = track.images.map((n, i) => makeCard(track, n, i+1)).join('');
+  const featuredCount = track.featured ? track.featured.length : 0;
+  const core = Array.from({length: featuredCount}, (_, i) => makeCard(track, track.images[i] || 1, i+1)).join('');
   return `<section class="track-row" style="--track-accent:${track.accent};--track-bg:${track.bg}">
     <div class="track-info">
       <div class="track-head"><span class="track-fig"><img src="${track.fig}"${track.figZoom ? ` class="fig-zoom" style="object-position:${track.figPos || 'center'};transform:scale(${track.figZoom})"` : ` style="object-position:${track.figPos || 'center'}"`} alt="Personagem da trilha ${track.name}" loading="lazy"></span><div class="track-no">${track.tag} <span class="track-sub">· ${track.name}</span></div></div>
@@ -36,25 +53,19 @@ function trackMarkup(track){
     </div>
     <div class="rail-area">
       <div class="rail-head"><div class="rail-title">${track.role}</div><div class="rail-controls"><button type="button" data-dir="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></button><button type="button" data-dir="next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
-      <div class="rail" data-track="${track.key}">${core}${core}${core}</div>
+      <div class="rail" data-track="${track.key}">${core}</div>
     </div>
   </section>`;
 }
 tracksEl.innerHTML = tracks.map(trackMarkup).join('');
 const sponsorsData = {
   premium: [
-    { name:'NGSX', photo:'assets/crops/nebula-bg.webp' },
-    { name:'Hakai Security', photo:'assets/crops/light-waves.png' },
-    { name:'BugHunt', photo:'assets/crops/purple-smoke.png' }
+    { name:'LATAM', bg:'#fff' }
   ],
   parceiros: [
-    { name:'Hacking na Web Day', photo:'assets/crops/city-skyline.jpg' },
-    { name:'Dunasec', photo:'assets/crops/mushroom-forest.jpg' },
-    { name:'Fortalsec', photo:'assets/crops/portal.jpg' },
-    { name:"Hack'a Valley", photo:'assets/crops/neon-door.jpg' },
-    { name:'BxSec', photo:'assets/crops/clock.jpg' },
-    { name:'XibeSec', photo:'assets/crops/falling-tunnel.jpg' },
-    { name:'Latam Airlines', photo:'assets/crops/light-frame.png' }
+    { name:'NGSX', bg:'#fff' },
+    { name:'Hakai Security', bg:'#000' },
+    { name:'BugHunt', bg:'#fff' }
   ]
 };
 document.querySelectorAll('.rail[data-sponsor-set]').forEach(rail => {
@@ -65,15 +76,14 @@ document.querySelectorAll('.rail[data-sponsor-set]').forEach(rail => {
   const list = sponsorsData[set] || [];
   const cards = Array.from({length: count}, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
-    const sp = list[i] || { name:'Espaço disponível', photo:'' };
-    const bgStyle = sp.photo ? ` style="background-image:url('${sp.photo}')"` : '';
+    const sp = list[i] || { name:'', photo:'' };
     const logoSrc = `assets/sponsors/${set}-${num}.png`;
+    const bgColor = sp.bg || '#000';
     return `<article class="logo-card" style="--track-accent:${accent}">
-      <div class="logo-photo"${bgStyle}><span class="logo-placeholder">${sp.name}</span><img src="${logoSrc}" alt="Logo ${sp.name}" loading="lazy" onerror="this.classList.add('image-error')"></div>
-      <div class="logo-body"><span class="slot">${label} ${num}</span><div class="logo-name">${sp.name}</div></div>
+      <div class="logo-photo" style="background:${bgColor}"><img src="${logoSrc}" alt="Logo ${sp.name}" loading="lazy" onerror="this.classList.add('image-error')"></div>
     </article>`;
   }).join('');
-  rail.innerHTML = cards + cards + cards;
+  rail.innerHTML = cards;
 });
 const finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
 document.querySelectorAll('.rail').forEach(rail => {
@@ -111,7 +121,6 @@ document.querySelectorAll('.rail').forEach(rail => {
   const endDrag=()=>{dragging=false;rail.classList.remove('is-dragging')};
   rail.addEventListener('pointerup',endDrag); rail.addEventListener('pointercancel',endDrag);
   rail.addEventListener('click', e => { if(suppressClick){ e.stopPropagation(); e.preventDefault(); suppressClick=false; } }, true);
-  rail.addEventListener('wheel', e => { if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();rail.scrollLeft+=e.deltaY;} }, {passive:false});
 });
 const header=document.getElementById('header');
 window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>24),{passive:true});
@@ -165,8 +174,8 @@ document.addEventListener('keydown', e => {
     tagEl.textContent = card.dataset.trackTag + ' · ' + card.dataset.trackName.toUpperCase();
     if (nameEl) nameEl.textContent = card.dataset.speakerName || 'Nome em breve';
     if (talkEl) talkEl.textContent = card.dataset.talk || '';
-    roleEl.textContent = card.dataset.role;
-    descEl.textContent = card.dataset.desc;
+    roleEl.textContent = card.dataset.speakerRole || card.dataset.role || '';
+    descEl.textContent = card.dataset.speakerBio || card.dataset.desc || '';
     if (slotEl) slotEl.textContent = card.dataset.slot;
     openModal('modal-speaker');
   };
@@ -661,7 +670,7 @@ if (cyberCursor) {
   const A_SPONSOR = "Sua marca em Wonderland em 4 níveis: **White Rabbit** (premium), **Cheshire** (gold), **Mad Hatter** (silver) e **Village** (temático). Preencha o [formulário de parcerias](https://forms.gle/MxmhBLyhL2LkASS87) ou escreva para [bsidesbsb@gmail.com](mailto:bsidesbsb@gmail.com) e peça o mídia kit.";
   const A_CTF = "O **CTF oficial** rola durante o evento, com desafios de **web, pwn, crypto, forense, OSINT e misc** — para todos os níveis, do iniciante ao avançado. Inscrição na hora, individual ou em equipe, e **prêmios para o top 3**.";
   const A_TRACKS = "São **4 trilhas temáticas** inspiradas nos personagens de Alice:\n- **Coelho Branco** — keynotes e talks principais\n- **Gato de Cheshire** — segurança ofensiva (red team / pentest)\n- **Rainha de Copas** — defesa e resposta (blue team / DFIR)\n- **Chapeleiro** — workshops e hands-on\nCada trilha tem 5 posições na lineup.";
-  const A_SPEAK = "Já temos palestrantes confirmados! **Wolmer Andrade Godoi** (Patchmageddon), **Ygor da Rocha (DMR)** (Evasão de Antivirus e Antimalware), **Alexandre Silva (Alexos)** (LeakOps) e **Allan Kardec** (Excalidraw). Os demais espaços serão preenchidos em breve — a chamada de palestras segue aberta, botão **Chamada de palestras** na seção Palestrantes.";
+  const A_SPEAK = "Já temos palestrantes confirmados! **Wolmer Andrade Godoi** (Patchmageddon), **Ygor da Rocha (DMR)** (Evasão de Antivirus e Antimalware), **Alexandre Silva (Alexos)** (LeakOps), **Allan Kardec** (Excalidraw) e **Rafael Santos** (a confirmar). Os demais espaços serão preenchidos em breve — a chamada de palestras segue aberta, botão **Chamada de palestras** na seção Palestrantes.";
   const A_DATE = "O **BSidesBSB 2026 — Down the Rabbit Hole** acontece em **14 de novembro de 2026**, em **Brasília**. Um dia inteiro de talks, CTF, villages e comunidade hacker.";
   const A_LOCAL = "O evento rola em **Brasília**. O endereço exato será revelado em breve — passe o mouse sobre o mapa na seção LOCAL para ver o mapa interativo, ou acompanhe o [Instagram](https://www.instagram.com/bsidesbsb/) para não perder o anúncio.";
   const A_AGENDA = "A **agenda completa** está disponível no site: clique em **VER A AGENDA** na seção Mapa da jornada para abrir o cronograma, com palestras em 4 palcos, CTF o dia inteiro e encerramento com premiação. Filtre por palco para focar no que te interessa.";
