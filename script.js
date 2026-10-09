@@ -65,7 +65,8 @@ const sponsorsData = {
   parceiros: [
     { name:'NGSX', bg:'#fff' },
     { name:'Hakai Security', bg:'#000' },
-    { name:'BugHunt', bg:'#fff' }
+    { name:'BugHunt', bg:'#fff' },
+    { name:'4root', bg:'#000' }
   ]
 };
 document.querySelectorAll('.rail[data-sponsor-set]').forEach(rail => {
